@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fPO-wk-YSc">
+    <device id="ipad12_9" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Page Collection View Controller-->
+        <scene sceneID="DIE-AG-qmF">
+            <objects>
+                <collectionViewController id="fPO-wk-YSc" customClass="MainPageCollectionViewController" customModule="PruebasiPad" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rfa-Zz-Waq">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PWk-xR-OzV">
+                            <size key="itemSize" width="582" height="456"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MyCell" reuseIdentifier="ProjectCollectionViewCell" id="ARz-7n-ZlW" customClass="ProjectCollectionViewCell" customModule="PruebasiPad" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="582" height="456"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="582" height="456"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="lNf-So-EKF">
+                                            <rect key="frame" x="0.0" y="0.0" width="582" height="456"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-BA-cYT">
+                                            <rect key="frame" x="18" y="28" width="546" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="snR-DA-Axf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="35"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <size key="shadowOffset" width="-2" height="2"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="XwQ-BA-cYT" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="topMargin" id="4Ph-Ui-Rr3"/>
+                                    <constraint firstItem="XwQ-BA-cYT" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" constant="10" id="9s2-tL-gjI"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="10" id="Ms0-3s-Ob4"/>
+                                    <constraint firstItem="lNf-So-EKF" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leading" id="S9h-Q8-yKY"/>
+                                    <constraint firstAttribute="bottom" secondItem="lNf-So-EKF" secondAttribute="bottom" id="WQb-7y-lXx"/>
+                                    <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" id="c3B-oq-Uij"/>
+                                    <constraint firstAttribute="trailing" secondItem="lNf-So-EKF" secondAttribute="trailing" id="j1C-x1-K1z"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="projectImageView" destination="lNf-So-EKF" id="oUQ-8t-xPV"/>
+                                    <outlet property="projectNameLabel" destination="XwQ-BA-cYT" id="hdd-zU-I9y"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fPO-wk-YSc" id="ay8-fh-2eA"/>
+                            <outlet property="delegate" destination="fPO-wk-YSc" id="1Tf-We-rAL"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VGg-o3-08e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-70.278184480234259" y="20.5078125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MainBackground" width="1950" height="1300"/>
+    </resources>
+</document>
