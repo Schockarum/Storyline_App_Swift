@@ -11,13 +11,14 @@ import UIKit
 
 class MainPageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let defaultSize = CGSize(width: 300, height: 200)
+    let defaultSize = CGSize(width: 300, height: 400)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupCreateButton()
     }
     
     
@@ -25,6 +26,25 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .red
+    }
+    
+    func setupCreateButton(){
+        let createButton = UIButton() //CreateButton implements from UIButton so everything should work as normal
+        createButton.translatesAutoresizingMaskIntoConstraints = false
+        createButton.setTitle("Create", for: .normal)
+        createButton.setTitleColor(.black, for: .normal)
+        createButton.setBackgroundImage(UIImage(named: "buttonPlaceholder"), for: .normal)
+        createButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        createButton.layer.shadowRadius = 0.0
+        createButton.layer.shadowOpacity = 1.0
+        createButton.layer.cornerRadius = 8
+        createButton.layer.masksToBounds = false
+        self.view.addSubview(createButton)
+        createButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        createButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        createButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        createButton.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

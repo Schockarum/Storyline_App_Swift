@@ -16,6 +16,8 @@ class CreateButton: UIButton{
     }
     
     func setupButton(){
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.setTitle("Create", for: .normal)
+        self.setTitleColor(.black, for: .normal)
     }
 }
