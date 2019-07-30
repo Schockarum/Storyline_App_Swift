@@ -11,6 +11,7 @@ import UIKit
 
 class MainPageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    let createSegueIdentifier = "createSegue"
     let defaultSize = CGSize(width: 300, height: 400)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
@@ -45,6 +46,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         createButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        createButton.addTarget(self, action: #selector(MainPageCollectionViewController.createProjectPressed),for: .touchUpInside)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,6 +72,10 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         //CELL Configurations like size usw. (cell.imageView.image = blablabla; cell.label.text = blabalba)
         
         return cell
+    }
+    
+    @IBAction  func createProjectPressed(sender: UIButton){
+        performSegue(withIdentifier: createSegueIdentifier, sender: self)
     }
     
 }
