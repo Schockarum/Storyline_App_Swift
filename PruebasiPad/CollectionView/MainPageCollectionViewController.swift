@@ -22,11 +22,13 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         setupCreateButton()
     }
     
+    //MARK: Setup Functions
     
     func setupView(){
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .red
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func setupCreateButton(){
@@ -49,6 +51,8 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         createButton.addTarget(self, action: #selector(MainPageCollectionViewController.createProjectPressed),for: .touchUpInside)
     }
     
+    //MARK: Class Functions
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return defaultSize
     }
@@ -59,7 +63,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         #warning("Número de celdas por mostrar, hay que poner el número de proyectos guardados una vez que logremos guardar cosas xddd")
-        return 20
+        return 17
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -68,11 +72,11 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        
         //CELL Configurations like size usw. (cell.imageView.image = blablabla; cell.label.text = blabalba)
-        
         return cell
     }
+    
+    //MARK: Actions
     
     @IBAction  func createProjectPressed(sender: UIButton){
         performSegue(withIdentifier: createSegueIdentifier, sender: self)
