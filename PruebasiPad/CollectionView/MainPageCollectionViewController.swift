@@ -12,11 +12,13 @@ import UIKit
 class MainPageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
-    let backgroundImageName = "ivoryPaper"
+    let backgroundImageName = "main background"
     let createSegueIdentifier = "createSegue"
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
+    var stories: [ProjectCollectionViewCell] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.setTitle("Create", for: .normal)
         createButton.setTitleColor(.black, for: .normal)
-        createButton.setBackgroundImage(UIImage(named: "buttonPlaceholder"), for: .normal)
+        createButton.setBackgroundImage(UIImage(named: "blue node"), for: .normal)
         createButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         createButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         createButton.layer.shadowRadius = 0.0
@@ -66,7 +68,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         #warning("Número de celdas por mostrar, hay que poner el número de proyectos guardados una vez que logremos guardar cosas xddd")
-        return 17
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

@@ -11,8 +11,6 @@ import GameplayKit
 
 class NodeMapScene: SKScene {
     
-    let storyNameLabelId = "//storyName"
-    
     private var label : SKLabelNode?
     private var node : SKSpriteNode?
     private var spinnyNode : SKShapeNode?
@@ -20,18 +18,19 @@ class NodeMapScene: SKScene {
     override func didMove(to view: SKView) {
         
         //Get label node from scene and store it for use later
-        self.label = self.childNode(withName: storyNameLabelId) as? SKLabelNode
+        self.label = self.childNode(withName: "//storyLabel") as? SKLabelNode
         if let label = self.label {
             label.alpha = 0.0
             label.text = "Changing text by code"
-            label.run(SKAction.fadeIn(withDuration: 5.0))
+            label.run(SKAction.fadeIn(withDuration: 2.0))
         }
         
-        self.node = self.childNode(withName: "myNode") as? SKSpriteNode
+        self.node = self.childNode(withName: "mainNode") as? SKSpriteNode
         if let node = self.node {
-            node.alpha = 0.0
-            node.run(SKAction.rotate(byAngle: 360, duration: 5.0))
+            node.alpha = 1.0
+            node.run(SKAction.rotate(byAngle: 5, duration: 5.0))
         }
+        
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
@@ -72,9 +71,9 @@ class NodeMapScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
+//        if let label = self.label {
+//            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+//        }
         
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }

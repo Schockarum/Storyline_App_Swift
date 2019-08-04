@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ProjectCollectionViewCell: UICollectionViewCell{
 
@@ -14,13 +15,14 @@ class ProjectCollectionViewCell: UICollectionViewCell{
     @IBOutlet weak var projectImageView: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
     
+    var storyName: String? // Here we store the storyname
+    var nodeList: [SKSpriteNode] = [] //Here we store every node that this story has
     
     override func awakeFromNib() {
         super .awakeFromNib()
         //initialization code
-        projectImageView.image = UIImage(named: "MainBackground")
-        projectImageView.layer.cornerRadius = 8
-        projectNameLabel.text = "It Works!"
-    }
-    
+        projectImageView.image = UIImage(named: "ivory paper")
+        projectImageView.layer.cornerRadius = 10
+        projectNameLabel.text = "New Story"
+        }
 }
