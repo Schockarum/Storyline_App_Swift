@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/SpriteKit/NodeMapScene.swift"
-            timestampString = "586572065.73879"
+            timestampString = "586589940.305236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "didMove(to:)"
             landmarkType = "7">
             <Actions>
@@ -36,6 +36,23 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            condition = "algo cno el label"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/SpriteKit/NodeMapScene.swift"
+            timestampString = "586589940.305896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

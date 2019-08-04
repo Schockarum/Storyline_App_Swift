@@ -14,6 +14,7 @@ class NodeMapScene: SKScene {
     let storyNameLabelId = "//storyName"
     
     private var label : SKLabelNode?
+    private var node : SKSpriteNode?
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
@@ -26,6 +27,11 @@ class NodeMapScene: SKScene {
             label.run(SKAction.fadeIn(withDuration: 5.0))
         }
         
+        self.node = self.childNode(withName: "myNode") as? SKSpriteNode
+        if let node = self.node {
+            node.alpha = 0.0
+            node.run(SKAction.rotate(byAngle: 360, duration: 5.0))
+        }
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)

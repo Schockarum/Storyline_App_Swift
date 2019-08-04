@@ -17,16 +17,18 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupTextView()
         // Do any additional setup after loading the view.
     }
     
     // MARK: - Setup Functions
     
-    func setupView(){
+    func setupTextView(){
         textView.delegate = self //TextView delegate
         textView.backgroundColor = .clear
         textView.textColor = .black
+        let font = UIFont(name: "Avenir Next", size: 25)
+        textView.font = font
         //Setup scroll and adaptative keyboard scroll
         NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
