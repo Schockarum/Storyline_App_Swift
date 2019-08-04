@@ -18,13 +18,13 @@ class NodeMapScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        // Get label node from scene and store it for use later
-//        self.label = self.childNode(withName: storyNameLabelId) as? SKLabelNode
-//        if let label = self.label {
-//            label.alpha = 0.0
-//            label.text = "Changint text by code"
-//            label.run(SKAction.fadeIn(withDuration: 5.0))
-//        }
+        //Get label node from scene and store it for use later
+        self.label = self.childNode(withName: storyNameLabelId) as? SKLabelNode
+        if let label = self.label {
+            label.alpha = 0.0
+            label.text = "Changing text by code"
+            label.run(SKAction.fadeIn(withDuration: 5.0))
+        }
         
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
