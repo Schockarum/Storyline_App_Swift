@@ -21,9 +21,22 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Setup Functions
+    
+    func setupView(){
+        textView.delegate = self //TextView delegate
+        textView.backgroundColor = .clear
+        textView.textColor = .black
+        //Setup scroll and adaptative keyboard scroll
+        NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+    }
+    
+    // MARK: - Override functions
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        textView.delegate = self //Si no ponemos el delegado, no podemos revisar cambios en él
         // Access the document
         document?.open(completionHandler: { (success) in
             if success {
@@ -35,20 +48,42 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         })
     }
     
-    func textViewDidChange(_ textView: UITextView) { //Monitor de cambio en el texto, aqui autoguardamos
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { //Hide Keyboard
+        super.touchesBegan(touches, with: event)
+        super.view.endEditing(true)
+    }
+    
+    // MARK: - Helper functions
+    
+    func textViewDidChange(_ textView: UITextView) { //Does something everytime the text changes
         document?.text = textView.attributedText
         document?.updateChangeCount(.done)
     }
+    
+    //Get keyboard frame not to interfere with text in textView
+    @objc func updateTextView(notification: Notification) {
+        let userInfo = notification.userInfo!
+        
+        let keyboardEndFrameScreenCoordinates = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardEndFrame = self.view.convert(keyboardEndFrameScreenCoordinates, to: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification
+        {
+            textView.contentInset = UIEdgeInsets.zero
+        } else {
+            textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardEndFrame.height, right: 0)
+            textView.scrollIndicatorInsets = textView.contentInset
+        }
+        
+        textView.scrollRangeToVisible(textView.selectedRange)
+    }
+    
+    // MARK: - Actions
     
     @IBAction func dismissDocumentViewController() {
         dismiss(animated: true) {
             //self.textViewDidChange(self.textView)
             self.document?.close(completionHandler: nil)
         }
-    }
-
-    func setupView(){
-        textView.backgroundColor = .clear
-        textView.textColor = .black
     }
 }

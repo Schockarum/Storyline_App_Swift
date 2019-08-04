@@ -11,8 +11,10 @@ import UIKit
 
 class MainPageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var mainBackgroundImageView: UIImageView!
+    let backgroundImageName = "ivoryPaper"
     let createSegueIdentifier = "createSegue"
-    let defaultSize = CGSize(width: 300, height: 400)
+    let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
     
@@ -28,6 +30,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .red
+        mainBackgroundImageView.image = UIImage(named: backgroundImageName)
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -67,7 +70,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return CGFloat(integerLiteral: 50)
+        return CGFloat(integerLiteral: 20)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
