@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController, UITextViewDelegate {
+class TextEditorViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var chapterNameLabel: UITextField!
     @IBOutlet weak var textView: UITextView!
@@ -30,8 +30,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         let font = UIFont(name: "Avenir Next", size: 25)
         textView.font = font
         //Setup scroll and adaptative keyboard scroll
-        NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DocumentViewController.updateTextView(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TextEditorViewController.updateTextView(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TextEditorViewController.updateTextView(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     

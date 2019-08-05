@@ -17,7 +17,8 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
-    var stories: [ProjectCollectionViewCell] = []
+    #warning("Como éste valor se inicializa en cero cada que abrimos la app, debemos cargar información para rellenar ésta variable antes de cargar las celdas.")
+    var stories: [ProjectCollectionViewCell] = [] //We store the stories here.
     
     
     override func viewDidLoad() {

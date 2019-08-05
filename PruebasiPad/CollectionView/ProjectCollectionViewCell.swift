@@ -15,8 +15,9 @@ class ProjectCollectionViewCell: UICollectionViewCell{
     @IBOutlet weak var projectImageView: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
     
+    
     var storyName: String? // Here we store the storyname
-    var nodeList: [SKSpriteNode] = [] //Here we store every node that this story has
+    //var nodeList: [SKSpriteNode] = [] //Here we store every node that this story has
     
     override func awakeFromNib() {
         super .awakeFromNib()
@@ -26,3 +27,5 @@ class ProjectCollectionViewCell: UICollectionViewCell{
         projectNameLabel.text = "New Story"
         }
 }
+
+/*Our custom Colection View Cell, it has an image view and a label so we can present the Story name and image (if there's any) on our app's main page */

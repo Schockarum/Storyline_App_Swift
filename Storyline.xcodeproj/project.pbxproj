@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		7D0E2B2322EE6F4300BA9811 /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */; };
 		7D0E2B2922EE8F3900BA9811 /* MainPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */; };
-		7D258D9D22EFF49E00F48E88 /* Nodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D258D9C22EFF49E00F48E88 /* Nodes.swift */; };
-		7D258DA222EFF5B300F48E88 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D258DA122EFF5B300F48E88 /* Document.swift */; };
-		7D258DA422F00A9400F48E88 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D258DA322F00A9400F48E88 /* DocumentViewController.swift */; };
+		7D258D9D22EFF49E00F48E88 /* SKStoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D258D9C22EFF49E00F48E88 /* SKStoryNode.swift */; };
+		7D4FDD2922F78B5700BA39A1 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2822F78B5700BA39A1 /* Chapter.swift */; };
+		7D4FDD2C22F799D500BA39A1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2A22F799D500BA39A1 /* Document.swift */; };
+		7D4FDD2D22F799D500BA39A1 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */; };
+		7D4FDD3222F7A38B00BA39A1 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3122F7A38B00BA39A1 /* Stories.swift */; };
 		7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA38EC22E7587D00268FEC /* AppDelegate.swift */; };
 		7DAA38F222E7587D00268FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F022E7587D00268FEC /* Main.storyboard */; };
 		7DAA38F422E7587E00268FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F322E7587E00268FEC /* Assets.xcassets */; };
@@ -24,10 +26,12 @@
 /* Begin PBXFileReference section */
 		7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewController.swift; sourceTree = "<group>"; };
-		7D258D9C22EFF49E00F48E88 /* Nodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nodes.swift; sourceTree = "<group>"; };
-		7D258DA122EFF5B300F48E88 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		7D258DA322F00A9400F48E88 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
-		7DAA38E922E7587D00268FEC /* PruebasiPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebasiPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D258D9C22EFF49E00F48E88 /* SKStoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStoryNode.swift; sourceTree = "<group>"; };
+		7D4FDD2822F78B5700BA39A1 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		7D4FDD2A22F799D500BA39A1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
+		7D4FDD3122F7A38B00BA39A1 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
+		7DAA38E922E7587D00268FEC /* Storyline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storyline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAA38EC22E7587D00268FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DAA38F122E7587D00268FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DAA38F322E7587E00268FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,8 +57,9 @@
 		7D258D9922EFF43300F48E88 /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
-				7D258D9C22EFF49E00F48E88 /* Nodes.swift */,
 				7DADBAB522F54B880018DCED /* Actions.sks */,
+				7D4FDD2822F78B5700BA39A1 /* Chapter.swift */,
+				7D258D9C22EFF49E00F48E88 /* SKStoryNode.swift */,
 				7DADBADF22F561110018DCED /* NodeMapScene.swift */,
 				7DADBADD22F5608F0018DCED /* NodeMapScene.sks */,
 				7DADBAB322F54B840018DCED /* GameViewController.swift */,
@@ -62,13 +67,13 @@
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
-		7D258DA522F010AD00F48E88 /* DocumentViewController */ = {
+		7D4FDD2E22F799DF00BA39A1 /* TextEditorViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7D258DA322F00A9400F48E88 /* DocumentViewController.swift */,
-				7D258DA122EFF5B300F48E88 /* Document.swift */,
+				7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */,
+				7D4FDD2A22F799D500BA39A1 /* Document.swift */,
 			);
-			path = DocumentViewController;
+			path = TextEditorViewController;
 			sourceTree = "<group>";
 		};
 		7DAA38E022E7587D00268FEC = {
@@ -82,7 +87,7 @@
 		7DAA38EA22E7587D00268FEC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DAA38E922E7587D00268FEC /* PruebasiPad.app */,
+				7DAA38E922E7587D00268FEC /* Storyline.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,14 +95,14 @@
 		7DAA38EB22E7587D00268FEC /* PruebasiPad */ = {
 			isa = PBXGroup;
 			children = (
-				7D258DA522F010AD00F48E88 /* DocumentViewController */,
+				7DAA38EC22E7587D00268FEC /* AppDelegate.swift */,
+				7D4FDD2E22F799DF00BA39A1 /* TextEditorViewController */,
 				7D258D9922EFF43300F48E88 /* SpriteKit */,
 				7DEEAD5722EC09170009BF1F /* CollectionView */,
-				7DAA38EC22E7587D00268FEC /* AppDelegate.swift */,
 				7DAA38F022E7587D00268FEC /* Main.storyboard */,
-				7DAA38F322E7587E00268FEC /* Assets.xcassets */,
 				7DAA38F522E7587E00268FEC /* LaunchScreen.storyboard */,
 				7DAA38F822E7587E00268FEC /* Info.plist */,
+				7DAA38F322E7587E00268FEC /* Assets.xcassets */,
 			);
 			path = PruebasiPad;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			children = (
 				7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */,
 				7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */,
+				7D4FDD3122F7A38B00BA39A1 /* Stories.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -114,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7DAA38E822E7587D00268FEC /* PruebasiPad */ = {
+		7DAA38E822E7587D00268FEC /* Storyline */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7DAA38FB22E7587E00268FEC /* Build configuration list for PBXNativeTarget "PruebasiPad" */;
+			buildConfigurationList = 7DAA38FB22E7587E00268FEC /* Build configuration list for PBXNativeTarget "Storyline" */;
 			buildPhases = (
 				7DAA38E522E7587D00268FEC /* Sources */,
 				7DAA38E622E7587D00268FEC /* Frameworks */,
@@ -126,9 +132,9 @@
 			);
 			dependencies = (
 			);
-			name = PruebasiPad;
+			name = Storyline;
 			productName = PruebasiPad;
-			productReference = 7DAA38E922E7587D00268FEC /* PruebasiPad.app */;
+			productReference = 7DAA38E922E7587D00268FEC /* Storyline.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,7 +152,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7DAA38E422E7587D00268FEC /* Build configuration list for PBXProject "PruebasiPad" */;
+			buildConfigurationList = 7DAA38E422E7587D00268FEC /* Build configuration list for PBXProject "Storyline" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -159,7 +165,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7DAA38E822E7587D00268FEC /* PruebasiPad */,
+				7DAA38E822E7587D00268FEC /* Storyline */,
 			);
 		};
 /* End PBXProject section */
@@ -183,14 +189,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4FDD2C22F799D500BA39A1 /* Document.swift in Sources */,
 				7DADBAB422F54B840018DCED /* GameViewController.swift in Sources */,
 				7DADBAE022F561110018DCED /* NodeMapScene.swift in Sources */,
+				7D4FDD3222F7A38B00BA39A1 /* Stories.swift in Sources */,
 				7D0E2B2922EE8F3900BA9811 /* MainPageCollectionViewController.swift in Sources */,
 				7D0E2B2322EE6F4300BA9811 /* ProjectCollectionViewCell.swift in Sources */,
 				7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */,
-				7D258DA422F00A9400F48E88 /* DocumentViewController.swift in Sources */,
-				7D258D9D22EFF49E00F48E88 /* Nodes.swift in Sources */,
-				7D258DA222EFF5B300F48E88 /* Document.swift in Sources */,
+				7D4FDD2D22F799D500BA39A1 /* TextEditorViewController.swift in Sources */,
+				7D258D9D22EFF49E00F48E88 /* SKStoryNode.swift in Sources */,
+				7D4FDD2922F78B5700BA39A1 /* Chapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +381,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7DAA38E422E7587D00268FEC /* Build configuration list for PBXProject "PruebasiPad" */ = {
+		7DAA38E422E7587D00268FEC /* Build configuration list for PBXProject "Storyline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7DAA38F922E7587E00268FEC /* Debug */,
@@ -382,7 +390,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7DAA38FB22E7587E00268FEC /* Build configuration list for PBXNativeTarget "PruebasiPad" */ = {
+		7DAA38FB22E7587E00268FEC /* Build configuration list for PBXNativeTarget "Storyline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7DAA38FC22E7587E00268FEC /* Debug */,

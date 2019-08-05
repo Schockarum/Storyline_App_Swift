@@ -13,7 +13,7 @@
         <!--Library-->
         <scene sceneID="DIE-AG-qmF">
             <objects>
-                <collectionViewController id="fPO-wk-YSc" customClass="MainPageCollectionViewController" customModule="PruebasiPad" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="fPO-wk-YSc" customClass="MainPageCollectionViewController" customModule="Storyline" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rfa-Zz-Waq">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MyCell" reuseIdentifier="ProjectCollectionViewCell" id="ARz-7n-ZlW" customClass="ProjectCollectionViewCell" customModule="PruebasiPad" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MyCell" reuseIdentifier="ProjectCollectionViewCell" id="ARz-7n-ZlW" customClass="ProjectCollectionViewCell" customModule="Storyline" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="582" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1315.9590043923865" y="20.5078125"/>
         </scene>
-        <!--Document View Controller-->
+        <!--Text Editor View Controller-->
         <scene sceneID="aPQ-ox-ArS">
             <objects>
-                <viewController id="IzW-ZY-h98" customClass="DocumentViewController" customModule="PruebasiPad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IzW-ZY-h98" customClass="TextEditorViewController" customModule="Storyline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9S6-8m-SdW">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--Game View Controller-->
         <scene sceneID="T0Q-YM-3mw">
             <objects>
-                <viewController id="pT7-jH-gr2" customClass="GameViewController" customModule="PruebasiPad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pT7-jH-gr2" customClass="GameViewController" customModule="Storyline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="y46-sC-kIr" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
