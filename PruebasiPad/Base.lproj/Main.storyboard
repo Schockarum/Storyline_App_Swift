@@ -40,7 +40,7 @@
                                             <rect key="frame" x="30" y="0.0" width="522" height="446"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-BA-cYT">
-                                            <rect key="frame" x="48" y="28" width="516" height="45"/>
+                                            <rect key="frame" x="48" y="28" width="506" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="snR-DA-Axf"/>
                                             </constraints>
@@ -55,7 +55,7 @@
                                 <constraints>
                                     <constraint firstItem="XwQ-BA-cYT" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="topMargin" id="4Ph-Ui-Rr3"/>
                                     <constraint firstItem="XwQ-BA-cYT" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" constant="40" id="9s2-tL-gjI"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="10" id="Ms0-3s-Ob4"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="20" id="Ms0-3s-Ob4"/>
                                     <constraint firstAttribute="trailing" secondItem="lNf-So-EKF" secondAttribute="trailing" constant="30" id="XPU-cW-MCK"/>
                                     <constraint firstAttribute="bottom" secondItem="lNf-So-EKF" secondAttribute="bottom" constant="10" id="bM6-GD-0NB"/>
                                     <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" id="c3B-oq-Uij"/>
@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" title="Library" id="hrG-Lt-sY3"/>
                     <connections>
                         <outlet property="mainBackgroundImageView" destination="DnT-y8-wr3" id="Kf8-Xz-n1I"/>
-                        <segue destination="pT7-jH-gr2" kind="show" identifier="createSegue" id="VME-gh-sQC"/>
+                        <segue destination="pT7-jH-gr2" kind="show" identifier="loadStory" id="VME-gh-sQC"/>
                         <segue destination="7ta-Wr-KsN" kind="presentation" identifier="createStory" id="ove-KH-UOD"/>
                     </connections>
                 </collectionViewController>

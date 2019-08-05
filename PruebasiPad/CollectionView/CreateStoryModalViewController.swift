@@ -15,9 +15,7 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var createStoryTextField: UITextField!
     var createdStory: Story?
     
-    //Vriables for AVFoundation
-    var session: AVCaptureSession?
-    var stillImageOutput: AVCapturePhotoOutput? //antes AVCaptureStillImageOutput
+    var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +39,11 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
         }
         if let image = createStoryImageView.image {
             createdStory?.image = image
+        } else {
+            createStoryImageView.image = UIImage(named: "texture5")
         }
+        mainPageCollectionViewReference.stories.append(createdStory!)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func pressCancelButton(_ sender: Any) {

@@ -14,6 +14,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     let backgroundImageName = "main background"
     let createSegueIdentifier = "createStory"
+    let openStorySegueId = "loadStory"
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
@@ -28,7 +29,12 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         loadStories()
     }
     
-    //MARK: Setup Functions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.collectionView.reloadData()
+    }
+    
+    //MARK: - Setup Functions
     
     func setupView(){
         collectionView.delegate = self
@@ -37,6 +43,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         mainBackgroundImageView.image = UIImage(named: backgroundImageName)
         mainBackgroundImageView.alpha = 0.8
         self.navigationController?.navigationBar.isHidden = false
+        navigationItem.title = "Library"
     }
     
     func setupCreateButton(){
@@ -64,7 +71,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         
     }
     
-    //MARK: Class Functions
+    //MARK: - Class Functions
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return defaultSize
@@ -89,10 +96,33 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         return cell
     }
     
-    //MARK: Actions
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: openStorySegueId, sender: self)
+    }
+    
+    //MARK: - Actions
     
     @IBAction  func createProjectPressed(sender: UIButton){
         performSegue(withIdentifier: createSegueIdentifier, sender: self)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case openStorySegueId: #warning("Queda pendiente, primero hay que conseguir cargar info al SpriteKite, que genere nodos a partir de la data")
+//            let cell = sender as! ProjectCollectionViewCell
+//            let indexPath = self.collectionView.indexPath(for: cell)
+//              ESTO DE ABAJO ES DEL OTRO PROYECTO, PARA REFERENCIA
+//            let productView = segue.destination as? ProductDetailViewController
+//            productView?.product = products[indexPath!.row]
+//            productView?.productListCartControl = self //Referencia de éste view p/inyección
+        
+        case createSegueIdentifier:
+            let createView = segue.destination as? CreateStoryModalViewController
+            createView?.mainPageCollectionViewReference = self //Code injection
+        default:
+            print("¡Oh, Neptuno!")
+        }
     }
     
 }
