@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
-class CreateStoryModalViewController: UIViewController {
+class CreateStoryModalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var createStoryImageView: UIImageView!
-    @IBOutlet weak var createStoryTextFiel: UITextField!
+    @IBOutlet weak var createStoryTextField: UITextField!
+    var createdStory: Story?
     
+    //Vriables for AVFoundation
+    var session: AVCaptureSession?
+    var stillImageOutput: AVCapturePhotoOutput? //antes AVCaptureStillImageOutput
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +28,49 @@ class CreateStoryModalViewController: UIViewController {
 
     func setupView(){
         view.backgroundColor = .clear
-        
+        createStoryTextField.backgroundColor = .clear
+        createStoryImageView.layer.cornerRadius = 10
     }
     
     // MARK: - Actions
     
     @IBAction func pressCreateButton(_ sender: Any) {
+        createdStory = Story()
+        if let storyName = createStoryTextField.text {
+            createdStory?.storyName = storyName
+        }
+        if let image = createStoryImageView.image {
+            createdStory?.image = image
+        }
     }
     
     @IBAction func pressCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func switchImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Overrides
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    // MARK: - UINavigationControllerDelegate Functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        createStoryImageView.image = image
+        dismiss(animated:true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

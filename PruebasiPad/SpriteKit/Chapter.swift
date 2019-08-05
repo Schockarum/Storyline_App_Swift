@@ -10,10 +10,10 @@ import UIKit
 
 class Chapter: NSObject, NSCoding{
 
-    var chapterTitle: String?
-    var contentsOfChapter: NSAttributedString?
+    var chapterTitle: String
+    var contentsOfChapter: NSAttributedString
     
-    init(withTitle: String, chapterContents: NSAttributedString) {
+    init(withTitle: String = "New Chapter", chapterContents: NSAttributedString = NSAttributedString(string: "")) { //With default values
         self.chapterTitle = withTitle
         self.contentsOfChapter = chapterContents
     }
@@ -31,6 +31,7 @@ class Chapter: NSObject, NSCoding{
         aCoder.encode(chapterTitle, forKey: "chapterTitle")
         aCoder.encode(contentsOfChapter, forKey: "contentsOfChapter")
     }
+    
 }
 
 

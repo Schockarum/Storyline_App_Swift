@@ -10,11 +10,11 @@ import SpriteKit
 
 class SKStoryNode: SKNode {
 
-    var chapter = Chapter(withTitle: "New Chapter", chapterContents: NSAttributedString(string: ""))
+    var chapter = Chapter()
     var childrenNodes: [SKStoryNode] = []
     weak var parentNode: SKStoryNode?
     
-    init(chapter: Chapter, childNodes: [SKStoryNode]) {
+    init(chapter: Chapter = Chapter(), childNodes: [SKStoryNode] = []) { //With default values
         super.init()
         self.chapter = chapter
         self.childrenNodes = childNodes

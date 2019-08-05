@@ -94,23 +94,17 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ivory paper" translatesAutoresizingMaskIntoConstraints="NO" id="tia-mV-gsA">
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYb-ou-4VE">
-                                <rect key="frame" x="100" y="120" width="500" height="804"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a name for your story" textAlignment="justified" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eWU-xP-vNe">
+                                <rect key="frame" x="700" y="320" width="566" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="Cng-NH-fzc"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name for your story" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eWU-xP-vNe">
-                                <rect key="frame" x="700" y="320" width="566" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Pam-xD-iSu"/>
+                                    <constraint firstAttribute="height" constant="70" id="Pam-xD-iSu"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="27"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-TY-GQL">
-                                <rect key="frame" x="733" y="550" width="500" height="100"/>
+                                <rect key="frame" x="733" y="590" width="500" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="IOk-Zv-AFg"/>
                                     <constraint firstAttribute="height" constant="100" id="qt5-2t-TFe"/>
@@ -124,7 +118,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nB-uK-Tgl">
-                                <rect key="frame" x="933" y="700" width="100" height="50"/>
+                                <rect key="frame" x="933" y="740" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="T9H-nF-xxl"/>
                                     <constraint firstAttribute="width" constant="100" id="vq4-By-nzC"/>
@@ -137,29 +131,51 @@
                                     <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="lb4-Ox-TRD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfZ-cT-auq">
+                                <rect key="frame" x="700" y="400" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="efk-ml-lYu"/>
+                                    <constraint firstAttribute="width" constant="150" id="xBm-mv-fHc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Change Image" image="picture">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchImage:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="PPV-Ce-fl0"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="texture5" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
+                                <rect key="frame" x="200" y="147" width="450" height="750"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="750" id="lIc-xq-F5s"/>
+                                    <constraint firstAttribute="width" constant="450" id="rI4-pS-SWb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wMe-xu-CMp" firstAttribute="trailing" secondItem="tia-mV-gsA" secondAttribute="trailing" id="3wH-7c-jqB"/>
-                            <constraint firstItem="jYb-ou-4VE" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" constant="100" id="4K2-vv-IEc"/>
-                            <constraint firstItem="wMe-xu-CMp" firstAttribute="bottom" secondItem="jYb-ou-4VE" secondAttribute="bottom" constant="100" id="Ace-4P-iwT"/>
                             <constraint firstItem="8nB-uK-Tgl" firstAttribute="top" secondItem="v3I-TY-GQL" secondAttribute="bottom" constant="50" id="BJz-AT-985"/>
                             <constraint firstItem="v3I-TY-GQL" firstAttribute="centerX" secondItem="eWU-xP-vNe" secondAttribute="centerX" id="DMF-Pt-BML"/>
-                            <constraint firstItem="eWU-xP-vNe" firstAttribute="leading" secondItem="jYb-ou-4VE" secondAttribute="trailing" constant="100" id="E2O-kf-lpe"/>
+                            <constraint firstItem="NfZ-cT-auq" firstAttribute="leading" secondItem="JFa-iQ-sY2" secondAttribute="trailing" constant="50" id="I1n-fD-9kz"/>
                             <constraint firstItem="v3I-TY-GQL" firstAttribute="top" secondItem="eWU-xP-vNe" secondAttribute="bottom" constant="200" id="Icq-Mm-pxU"/>
+                            <constraint firstItem="NfZ-cT-auq" firstAttribute="top" secondItem="eWU-xP-vNe" secondAttribute="bottom" constant="10" id="Ivy-HO-VaF"/>
                             <constraint firstItem="tia-mV-gsA" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" id="JSS-Ca-eFr"/>
+                            <constraint firstItem="eWU-xP-vNe" firstAttribute="leading" secondItem="JFa-iQ-sY2" secondAttribute="trailing" constant="50" id="LYI-nz-nD0"/>
                             <constraint firstItem="8nB-uK-Tgl" firstAttribute="centerX" secondItem="v3I-TY-GQL" secondAttribute="centerX" id="MYL-Xq-52l"/>
+                            <constraint firstItem="JFa-iQ-sY2" firstAttribute="centerY" secondItem="wMe-xu-CMp" secondAttribute="centerY" id="VWp-M8-SS9"/>
                             <constraint firstItem="eWU-xP-vNe" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" constant="300" id="ZwS-OD-wBs"/>
+                            <constraint firstItem="JFa-iQ-sY2" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" constant="200" id="h1e-1d-hOa"/>
                             <constraint firstItem="tia-mV-gsA" firstAttribute="bottom" secondItem="wMe-xu-CMp" secondAttribute="bottom" id="sX9-i0-3YJ"/>
                             <constraint firstItem="wMe-xu-CMp" firstAttribute="trailing" secondItem="eWU-xP-vNe" secondAttribute="trailing" constant="100" id="tNU-WU-Fh3"/>
-                            <constraint firstItem="jYb-ou-4VE" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" constant="100" id="yta-nm-ZLi"/>
                             <constraint firstItem="tia-mV-gsA" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" id="zQh-e0-TEE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wMe-xu-CMp"/>
                     </view>
                     <connections>
-                        <outlet property="createStoryImageView" destination="jYb-ou-4VE" id="zdf-87-lg1"/>
-                        <outlet property="createStoryTextFiel" destination="eWU-xP-vNe" id="RWv-lL-kNh"/>
+                        <outlet property="createStoryImageView" destination="JFa-iQ-sY2" id="WDg-O8-RgZ"/>
+                        <outlet property="createStoryTextField" destination="eWU-xP-vNe" id="1pE-Kj-FKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FD-pO-LIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,5 +284,7 @@
     <resources>
         <image name="green banner 2" width="1340" height="336"/>
         <image name="ivory paper" width="3888" height="2592"/>
+        <image name="picture" width="30" height="30"/>
+        <image name="texture5" width="4000" height="3000"/>
     </resources>
 </document>
