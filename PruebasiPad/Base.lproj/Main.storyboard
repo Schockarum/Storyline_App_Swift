@@ -76,11 +76,95 @@
                     <connections>
                         <outlet property="mainBackgroundImageView" destination="DnT-y8-wr3" id="Kf8-Xz-n1I"/>
                         <segue destination="pT7-jH-gr2" kind="show" identifier="createSegue" id="VME-gh-sQC"/>
+                        <segue destination="7ta-Wr-KsN" kind="presentation" identifier="createStory" id="ove-KH-UOD"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGg-o3-08e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1315.9590043923865" y="20.5078125"/>
+        </scene>
+        <!--Create Story Modal View Controller-->
+        <scene sceneID="xew-IX-mRB">
+            <objects>
+                <viewController id="7ta-Wr-KsN" customClass="CreateStoryModalViewController" customModule="Storyline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EBZ-Ye-WIa">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ivory paper" translatesAutoresizingMaskIntoConstraints="NO" id="tia-mV-gsA">
+                                <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYb-ou-4VE">
+                                <rect key="frame" x="100" y="120" width="500" height="804"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="Cng-NH-fzc"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name for your story" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eWU-xP-vNe">
+                                <rect key="frame" x="700" y="320" width="566" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Pam-xD-iSu"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-TY-GQL">
+                                <rect key="frame" x="733" y="550" width="500" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="IOk-Zv-AFg"/>
+                                    <constraint firstAttribute="height" constant="100" id="qt5-2t-TFe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                                <state key="normal" title="Create!" backgroundImage="green banner 2">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="SOb-Qv-pwW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nB-uK-Tgl">
+                                <rect key="frame" x="933" y="700" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T9H-nF-xxl"/>
+                                    <constraint firstAttribute="width" constant="100" id="vq4-By-nzC"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressCancelButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="NFq-5h-As2"/>
+                                    <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="lb4-Ox-TRD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wMe-xu-CMp" firstAttribute="trailing" secondItem="tia-mV-gsA" secondAttribute="trailing" id="3wH-7c-jqB"/>
+                            <constraint firstItem="jYb-ou-4VE" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" constant="100" id="4K2-vv-IEc"/>
+                            <constraint firstItem="wMe-xu-CMp" firstAttribute="bottom" secondItem="jYb-ou-4VE" secondAttribute="bottom" constant="100" id="Ace-4P-iwT"/>
+                            <constraint firstItem="8nB-uK-Tgl" firstAttribute="top" secondItem="v3I-TY-GQL" secondAttribute="bottom" constant="50" id="BJz-AT-985"/>
+                            <constraint firstItem="v3I-TY-GQL" firstAttribute="centerX" secondItem="eWU-xP-vNe" secondAttribute="centerX" id="DMF-Pt-BML"/>
+                            <constraint firstItem="eWU-xP-vNe" firstAttribute="leading" secondItem="jYb-ou-4VE" secondAttribute="trailing" constant="100" id="E2O-kf-lpe"/>
+                            <constraint firstItem="v3I-TY-GQL" firstAttribute="top" secondItem="eWU-xP-vNe" secondAttribute="bottom" constant="200" id="Icq-Mm-pxU"/>
+                            <constraint firstItem="tia-mV-gsA" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" id="JSS-Ca-eFr"/>
+                            <constraint firstItem="8nB-uK-Tgl" firstAttribute="centerX" secondItem="v3I-TY-GQL" secondAttribute="centerX" id="MYL-Xq-52l"/>
+                            <constraint firstItem="eWU-xP-vNe" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" constant="300" id="ZwS-OD-wBs"/>
+                            <constraint firstItem="tia-mV-gsA" firstAttribute="bottom" secondItem="wMe-xu-CMp" secondAttribute="bottom" id="sX9-i0-3YJ"/>
+                            <constraint firstItem="wMe-xu-CMp" firstAttribute="trailing" secondItem="eWU-xP-vNe" secondAttribute="trailing" constant="100" id="tNU-WU-Fh3"/>
+                            <constraint firstItem="jYb-ou-4VE" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" constant="100" id="yta-nm-ZLi"/>
+                            <constraint firstItem="tia-mV-gsA" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" id="zQh-e0-TEE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wMe-xu-CMp"/>
+                    </view>
+                    <connections>
+                        <outlet property="createStoryImageView" destination="jYb-ou-4VE" id="zdf-87-lg1"/>
+                        <outlet property="createStoryTextFiel" destination="eWU-xP-vNe" id="RWv-lL-kNh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FD-pO-LIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1315.9590043923865" y="782.8125"/>
         </scene>
         <!--Text Editor View Controller-->
         <scene sceneID="aPQ-ox-ArS">
@@ -182,6 +266,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="green banner 2" width="1340" height="336"/>
         <image name="ivory paper" width="3888" height="2592"/>
     </resources>
 </document>

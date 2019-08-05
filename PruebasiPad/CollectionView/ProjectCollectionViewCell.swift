@@ -11,7 +11,7 @@ import SpriteKit
 
 class ProjectCollectionViewCell: UICollectionViewCell{
 
-    
+    #warning("Nombres confusos, deberían llamarse 'StoryImageView' y 'StoryTitleLabel', arreglar al final, si queda tiempo.")
     @IBOutlet weak var projectImageView: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
     

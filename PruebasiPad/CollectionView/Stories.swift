@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Stories: NSObject, NSCoding {
+class Story: NSObject, NSCoding {
     
     var image: UIImage? //Image for the CollectionViewController
     var storyName: String? //Name for the CVC
@@ -37,5 +37,5 @@ class Stories: NSObject, NSCoding {
     }
 }
 
-/*Stories is the class responsible of providing the data to both the Collection View (how many stories are so it can display stuff)
- and also to the Stories themselves, providing them the node data they need to display themselves on screen. */
+/*Story is the class responsible of storing the starting data of a story, such as the title, the associed image to it and the root node of it.
+ It conforms to the NSCoding Protocol so it can be stored and it can persist.*/

@@ -13,18 +13,19 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     let backgroundImageName = "main background"
-    let createSegueIdentifier = "createSegue"
+    let createSegueIdentifier = "createStory"
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
     #warning("Como éste valor se inicializa en cero cada que abrimos la app, debemos cargar información para rellenar ésta variable antes de cargar las celdas.")
-    var stories: [ProjectCollectionViewCell] = [] //We store the stories here.
+    var stories: [Story] = [] //We load the stories to this list and display on each cell whatever we have inside this variable.
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupCreateButton()
+        loadStories()
     }
     
     //MARK: Setup Functions
@@ -32,8 +33,9 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     func setupView(){
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .black
         mainBackgroundImageView.image = UIImage(named: backgroundImageName)
+        mainBackgroundImageView.alpha = 0.8
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -57,6 +59,11 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         createButton.addTarget(self, action: #selector(MainPageCollectionViewController.createProjectPressed),for: .touchUpInside)
     }
     
+    #warning("Hay que cargar las historias que tenemos codificadas y agregarlas a la variable de clase que las contendrá")
+    func loadStories(){
+        
+    }
+    
     //MARK: Class Functions
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -68,8 +75,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        #warning("Número de celdas por mostrar, hay que poner el número de proyectos guardados una vez que logremos guardar cosas xddd")
-        return 7
+        return stories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -78,7 +84,8 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        //CELL Configurations like size usw. (cell.imageView.image = blablabla; cell.label.text = blabalba)
+        cell.projectNameLabel.text = stories[indexPath.row].storyName
+        cell.projectImageView.image = stories[indexPath.row].image
         return cell
     }
     
