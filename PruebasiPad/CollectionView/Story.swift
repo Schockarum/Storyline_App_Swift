@@ -13,6 +13,9 @@ class Story: NSObject, NSCoding {
     var image: UIImage? //Image for the CollectionViewController
     var storyName: String? //Name for the CVC
     var root: SKStoryNode //Root for the tree structure, it contains the rest of the story nodes recursively.
+    let uuid = UUID() //Unique identifier so we never make the same data for stories with the same name
+    
+    
     
     init(name: String = "New Story", initialNode: SKStoryNode = SKStoryNode()){
         self.storyName = name
@@ -39,6 +42,7 @@ class Story: NSObject, NSCoding {
     func setStoryImage(image: UIImage){
         self.image = image
     }
+    
 }
 
 /*Story is the class responsible of storing the starting data of a story, such as the title, the associed image to it and the root node of it.

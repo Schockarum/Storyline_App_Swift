@@ -18,20 +18,25 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
-    #warning("Como éste valor se inicializa en cero cada que abrimos la app, debemos cargar información para rellenar ésta variable antes de cargar las celdas.")
     var stories: [Story] = [] //We load the stories to this list and display on each cell whatever we have inside this variable.
+    var storiesIds: [UUID] = [] //We have to load the uuids, then load the stories from documents that have this IDs.
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupCreateButton()
-        loadStories()
+        loadStories(from: storiesIds)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        loadStories(from: storiesIds)
         self.collectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) { //We save the uuid list before changing views.
+        self.save(uuid: storiesIds)
     }
     
     //MARK: - Setup Functions
@@ -66,9 +71,9 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         createButton.addTarget(self, action: #selector(MainPageCollectionViewController.createProjectPressed),for: .touchUpInside)
     }
     
-    #warning("Hay que cargar las historias que tenemos codificadas y agregarlas a la variable de clase que las contendrá")
-    func loadStories(){
-        
+    // MARK: - NSCoding Protocol
+    override func encode(with aCoder: NSCoder) {
+        aCoder.encode(storiesIds, forKey: "uuids")
     }
     
     //MARK: - Class Functions
@@ -100,7 +105,64 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         self.performSegue(withIdentifier: openStorySegueId, sender: self)
     }
     
-    //MARK: - Actions
+    // MARK: - Utility Functions
+    
+    func loadUUIDList(){
+        do {
+            let fm = FileManager.default
+            let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let sourceURL = documentsDirectory.appendingPathComponent("storyList")
+            let uuidData = try NSData(contentsOf: sourceURL, options: .mappedIfSafe) as Data
+            let listOfUUID = NSKeyedUnarchiver.unarchiveObject(with: uuidData) as! [UUID]
+            self.storiesIds = listOfUUID
+        } catch {
+            print("Unable to read Stories UUID List from Documents")
+        }
+    }
+    
+    func loadStories(from uuidList: [UUID]){
+        for uuid in self.storiesIds {
+            loadSingleStory(uuid: uuid)
+        }
+    }
+    
+    func loadSingleStory(uuid: UUID){
+        do {
+            let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let sourceURL = documentsDirectoryURL.appendingPathComponent("\(uuid)")
+            let storyReadData = try NSData(contentsOf: sourceURL, options: .mappedIfSafe) as Data
+            let readStory = NSKeyedUnarchiver.unarchiveObject(with: storyReadData) as! Story
+            self.stories.append(readStory)
+        } catch {
+            print(error)
+        }
+    }
+   
+    func save(uuid list: [UUID]){
+        do {
+            let fm = FileManager.default
+            let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let saveFile = documentsDirectory.appendingPathComponent("storyList")
+            let uuidData = try NSKeyedArchiver.archivedData(withRootObject: list, requiringSecureCoding: false)
+            try uuidData.write(to: saveFile)
+        } catch {
+            print("Unable to save Stories UUID List to Documents")
+        }
+    }
+    
+    func save(a story: Story){
+        do {
+            let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let saveFile = documentsDirectoryURL.appendingPathComponent("\(story.uuid)")
+            let storyData = try NSKeyedArchiver.archivedData(withRootObject: story, requiringSecureCoding: false)
+            try storyData.write(to: saveFile)
+        } catch {
+            print("Unable to save Story to Documents")
+        }
+    }
+
+    
+    // MARK: - Actions
     
     @IBAction  func createProjectPressed(sender: UIButton){
         performSegue(withIdentifier: createSegueIdentifier, sender: self)

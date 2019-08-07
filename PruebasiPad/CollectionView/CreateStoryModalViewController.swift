@@ -31,7 +31,7 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     }
     
     // MARK: - Actions
-    
+    #warning("Al presionar el botón de creación, se debe guardar la historia.")
     @IBAction func pressCreateButton(_ sender: Any) {
         createdStory = Story()
         if let storyName = createStoryTextField.text {
@@ -43,6 +43,8 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
             createStoryImageView.image = UIImage(named: "texture5")
         }
         mainPageCollectionViewReference.stories.append(createdStory!)
+        mainPageCollectionViewReference.storiesIds.append(createdStory!.uuid)
+        mainPageCollectionViewReference.save(a: createdStory!)
         dismiss(animated: true, completion: nil)
     }
     
