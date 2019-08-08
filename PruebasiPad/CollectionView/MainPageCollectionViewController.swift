@@ -131,8 +131,11 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
             let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let sourceURL = documentsDirectoryURL.appendingPathComponent("\(uuid)")
             let storyReadData = try NSData(contentsOf: sourceURL, options: .mappedIfSafe) as Data
-            let readStory = NSKeyedUnarchiver.unarchiveObject(with: storyReadData) as! Story
-            self.stories.append(readStory)
+            if let readStory = try NSKeyedUnarchiver.unarchivedObject(ofClass: Story.self, from: storyReadData) {
+                self.stories.append(readStory)
+            } else {
+                
+            }
         } catch {
             print(error)
         }
@@ -148,6 +151,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         } catch {
             print("Unable to save Stories UUID List to Documents")
         }
+            print("Saved uuid list successfully.")
     }
     
     func save(a story: Story){
