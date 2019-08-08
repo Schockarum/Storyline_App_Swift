@@ -95,11 +95,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.9926"
+            timestampString = "586935682.463739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
             <Actions>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.993005"
+            timestampString = "586935682.4641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
             <Actions>
@@ -145,11 +145,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.993281"
+            timestampString = "586935682.4643461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "loadSingleStory(uuid:)"
             landmarkType = "7">
             <Actions>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.9935369"
+            timestampString = "586935682.464576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "loadSingleStory(uuid:)"
             landmarkType = "7">
             <Actions>
@@ -195,18 +195,18 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.993794"
+            timestampString = "586935682.464799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "loadSingleStory(uuid:)"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
                   <ActionContent
-                     message = "loaded a single story with uuid: @uuid@"
+                     message = "Loading a single story with uuid: @uuid@"
                      conveyanceType = "0">
                   </ActionContent>
                </BreakpointActionProxy>
@@ -220,11 +220,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.994006"
+            timestampString = "586935682.46503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "loadStories(from:)"
             landmarkType = "7">
             <Actions>
@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "586924293.994205"
+            timestampString = "586935682.465259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "save(uuid:)"
             landmarkType = "7">
             <Actions>
@@ -257,6 +257,131 @@
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
                   <ActionContent
                      message = "Attempting to save uuid list to disk"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
+            timestampString = "586935682.465486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "save(uuid:)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "UUID list: @storiesIds@"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
+            timestampString = "586935682.465705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "loadUUIDList()"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "Atempting to load uuid list from storyList in Documents"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
+            timestampString = "586935682.465921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "loadUUIDList()"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "list read: @self.storiesIds@"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
+            timestampString = "586935682.4661289"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "save(a:)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "Attempting to save a story..."
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
+            timestampString = "586935682.466344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "save(a:)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "Writing story data to documents..."
                      conveyanceType = "0">
                   </ActionContent>
                </BreakpointActionProxy>

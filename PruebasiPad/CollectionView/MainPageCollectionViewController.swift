@@ -26,11 +26,11 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         super.viewDidLoad()
         setupView()
         setupCreateButton()
-        loadStories(from: storiesIds)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        loadUUIDList()
         loadStories(from: storiesIds)
         self.collectionView.reloadData()
     }
@@ -108,20 +108,27 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     // MARK: - Utility Functions
     
     func loadUUIDList(){
+        print("Found \(self.storiesIds.count) items on uuid list")
+        for uuid in self.storiesIds{
+            print(uuid.uuid)
+        }
+        
         do {
             let fm = FileManager.default
             let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let sourceURL = documentsDirectory.appendingPathComponent("storyList")
-            let uuidData = try NSData(contentsOf: sourceURL, options: .mappedIfSafe) as Data
+            let uuidData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
             let listOfUUID = NSKeyedUnarchiver.unarchiveObject(with: uuidData) as! [UUID]
+            print("Before loading \(self.stories)")
             self.storiesIds = listOfUUID
+            print("After loading \(self.storiesIds)")
         } catch {
             print("Unable to read Stories UUID List from Documents")
         }
     }
     
     func loadStories(from uuidList: [UUID]){
-        for uuid in self.storiesIds {
+        for uuid in uuidList {
             loadSingleStory(uuid: uuid)
         }
     }
@@ -130,7 +137,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         do {
             let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let sourceURL = documentsDirectoryURL.appendingPathComponent("\(uuid)")
-            let storyReadData = try NSData(contentsOf: sourceURL, options: .mappedIfSafe) as Data
+            let storyReadData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
             if let readStory = try NSKeyedUnarchiver.unarchivedObject(ofClass: Story.self, from: storyReadData) {
                 self.stories.append(readStory)
             } else {
