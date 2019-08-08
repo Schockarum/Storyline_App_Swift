@@ -10,6 +10,9 @@ import SpriteKit
 
 class SKStoryNode: SKNode {
 
+    static var secureCoding = true
+    override public class var supportsSecureCoding: Bool { return secureCoding }
+
     var chapter = Chapter()
     var childrenNodes: [SKStoryNode] = []
     weak var parentNode: SKStoryNode?
@@ -23,10 +26,10 @@ class SKStoryNode: SKNode {
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let chapter = aDecoder.decodeObject(forKey: "chapter") as? Chapter,
-            let children = aDecoder.decodeObject(forKey: "childrenNodes") as? [SKStoryNode]
+        guard let chapter = aDecoder.decodeObject(of: Chapter.self, forKey: "chapter"),
+        let children = aDecoder.decodeObject(of: [SKStoryNode.self], forKey: "childrenNodes")
             else { return nil }
-        self.init(chapter: chapter, childNodes: children)
+        self.init(chapter: chapter, childNodes: children as! [SKStoryNode])
     }
     
     override func encode(with aCoder: NSCoder) {
