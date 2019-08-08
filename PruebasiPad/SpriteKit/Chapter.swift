@@ -23,9 +23,10 @@ class Chapter: NSObject, NSSecureCoding{
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let title = aDecoder.decodeObject(of: [], forKey: "chapterTitle"),
-            let contents = aDecoder.decodeObject(of: NSAttributedString.self, forKey: "contentsOfChapter") else
-        { return nil }
+        guard let title = aDecoder.decodeObject(of: [], forKey: "chapterTitle")
+            else { return nil }
+        guard let contents = aDecoder.decodeObject(of: NSAttributedString.self, forKey: "contentsOfChapter")
+            else { return nil }
         self.init(withTitle: title as! String, chapterContents: contents)
     }
     

@@ -18,19 +18,20 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     let defaultSize = CGSize(width: 320, height: 510)
     private let reusableIdentifier = "ProjectCollectionViewCell"
 
-    var stories: [Story] = [] //We load the stories to this list and display on each cell whatever we have inside this variable.
-    var storiesIds: [UUID] = [] //We have to load the uuids, then load the stories from documents that have this IDs.
+    var stories: [Story] = []
+    var storiesIds: [UUID] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupCreateButton()
-    }
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadUUIDList()
+        //trollFunctionToClearMyListBeforeLaunchingAgain()
         loadStories(from: storiesIds)
         self.collectionView.reloadData()
     }
@@ -110,7 +111,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     func loadUUIDList(){
         print("Found \(self.storiesIds.count) items on uuid list")
         for uuid in self.storiesIds{
-            print(uuid.uuid)
+            print(uuid)
         }
         
         do {
@@ -118,7 +119,7 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
             let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let sourceURL = documentsDirectory.appendingPathComponent("storyList")
             let uuidData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
-            let listOfUUID = NSKeyedUnarchiver.unarchiveObject(with: uuidData) as! [UUID]
+            let listOfUUID = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(uuidData) as? [UUID] ?? []
             print("Before loading \(self.stories)")
             self.storiesIds = listOfUUID
             print("After loading \(self.storiesIds)")
@@ -138,11 +139,10 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
             let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let sourceURL = documentsDirectoryURL.appendingPathComponent("\(uuid)")
             let storyReadData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
-            if let readStory = try NSKeyedUnarchiver.unarchivedObject(ofClass: Story.self, from: storyReadData) {
-                self.stories.append(readStory)
-            } else {
-                
-            }
+            print("Read story data: \(storyReadData)")
+            guard let readStory = try NSKeyedUnarchiver.unarchivedObject(ofClass: Story.self, from: storyReadData) else { return }
+            print(readStory)
+            //self.stories.append(readStory)
         } catch {
             print(error)
         }
@@ -172,7 +172,11 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         }
     }
 
-    
+    #warning("Delete this before launching for real xdddd")
+    func trollFunctionToClearMyListBeforeLaunchingAgain(){
+        self.storiesIds = []
+        self.save(uuid: [])
+    }
     // MARK: - Actions
     
     @IBAction  func createProjectPressed(sender: UIButton){

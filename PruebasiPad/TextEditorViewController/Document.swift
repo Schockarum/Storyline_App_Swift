@@ -14,12 +14,18 @@ class Document: UIDocument {
     
     override func contents(forType typeName: String) throws -> Any {
         guard let textToSave = text else { return Data() }
-        return NSKeyedArchiver.archivedData(withRootObject: textToSave)
+        do {
+            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: textToSave, requiringSecureCoding: true)
+            return archivedData
+        } catch {
+            print("Something went wrong with the contents to save")
+        }
+        return Data()
     }
     
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         guard let data = contents as? Data else { return }
-        guard let filecontent = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSAttributedString else {return}
+        let filecontent = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? NSAttributedString
         text = filecontent
     }
 }

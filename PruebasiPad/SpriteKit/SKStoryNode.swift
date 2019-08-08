@@ -26,8 +26,9 @@ class SKStoryNode: SKNode {
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let chapter = aDecoder.decodeObject(of: Chapter.self, forKey: "chapter"),
-        let children = aDecoder.decodeObject(of: [SKStoryNode.self], forKey: "childrenNodes")
+        guard let chapter = aDecoder.decodeObject(of: Chapter.self, forKey: "chapter")
+            else { return nil }
+        guard let children = aDecoder.decodeObject(of: [SKStoryNode.self], forKey: "childrenNodes")
             else { return nil }
         self.init(chapter: chapter, childNodes: children as! [SKStoryNode])
     }

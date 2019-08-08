@@ -27,10 +27,11 @@ class Story: NSObject, NSSecureCoding {
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let workName = aDecoder.decodeObject(of: [], forKey: "storyName"),
-            let rootNode = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "root")
+        guard let workName = aDecoder.decodeObject(of: [], forKey: "storyName")
             else { return nil }
-        self.init(name: workName as! String, initialNode: rootNode)
+        guard let root = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "root")
+            else { return nil }
+        self.init(name: workName as! String, initialNode: root)
     }
     
     func encode(with aCoder: NSCoder) {
