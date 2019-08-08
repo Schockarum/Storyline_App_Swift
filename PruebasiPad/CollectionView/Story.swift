@@ -8,7 +8,9 @@
 
 import UIKit
 
-class Story: NSObject, NSCoding {
+class Story: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
     
     var image: UIImage? //Image for the CollectionViewController
     var storyName: String? //Name for the CVC
@@ -25,10 +27,10 @@ class Story: NSObject, NSCoding {
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let workName = aDecoder.decodeObject(forKey: "storyName") as? String,
-            let rootNode = aDecoder.decodeObject(forKey: "rootNode") as? SKStoryNode
+        guard let workName = aDecoder.decodeObject(of: [], forKey: "storyName"),
+            let rootNode = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "rootNode")
             else { return nil }
-        self.init(name: workName, initialNode: rootNode)
+        self.init(name: workName as! String, initialNode: rootNode)
     }
     
     func encode(with aCoder: NSCoder) {
