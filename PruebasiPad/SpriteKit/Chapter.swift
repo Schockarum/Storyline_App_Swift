@@ -8,7 +8,9 @@
 
 import UIKit
 
-class Chapter: NSObject, NSCoding{
+class Chapter: NSObject, NSSecureCoding{
+
+    static var supportsSecureCoding: Bool = true
 
     var chapterTitle: String
     var contentsOfChapter: NSAttributedString
@@ -21,10 +23,10 @@ class Chapter: NSObject, NSCoding{
     // MARK: - NSCoding Protocol
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let title = aDecoder.decodeObject(forKey: "chapterTitle") as? String,
-            let contents = aDecoder.decodeObject(forKey: "contentsOfChapter") as? NSAttributedString else
+        guard let title = aDecoder.decodeObject(of: [], forKey: "chapterTitle"),
+            let contents = aDecoder.decodeObject(of: NSAttributedString.self, forKey: "contentsOfChapter") else
         { return nil }
-        self.init(withTitle: title, chapterContents: contents)
+        self.init(withTitle: title as! String, chapterContents: contents)
     }
     
     func encode(with aCoder: NSCoder) {

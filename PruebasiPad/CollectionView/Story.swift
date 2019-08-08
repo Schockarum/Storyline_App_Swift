@@ -28,7 +28,7 @@ class Story: NSObject, NSSecureCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         guard let workName = aDecoder.decodeObject(of: [], forKey: "storyName"),
-            let rootNode = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "rootNode")
+            let rootNode = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "root")
             else { return nil }
         self.init(name: workName as! String, initialNode: rootNode)
     }
@@ -36,7 +36,7 @@ class Story: NSObject, NSSecureCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(image, forKey: "image")
         aCoder.encode(storyName, forKey: "storyName")
-        aCoder.encode(root, forKey: "rootNode")
+        aCoder.encode(root, forKey: "root")
     }
     
     // MARK: - Utility functions
