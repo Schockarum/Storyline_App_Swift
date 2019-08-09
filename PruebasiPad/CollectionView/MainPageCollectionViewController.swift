@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 
-class MainPageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainPageCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     let backgroundImageName = "main background"
@@ -24,20 +25,18 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let realm = try! Realm()
         setupView()
         setupCreateButton()
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadUUIDList()
-        //trollFunctionToClearMyListBeforeLaunchingAgain()
-        loadStories(from: storiesIds)
         self.collectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) { //We save the uuid list before changing views.
-        self.save(uuid: storiesIds)
+        
     }
     
     //MARK: - Setup Functions
@@ -77,6 +76,36 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
         aCoder.encode(storiesIds, forKey: "uuids")
     }
     
+    // MARK: - Actions
+    
+    @IBAction  func createProjectPressed(sender: UIButton){
+        performSegue(withIdentifier: createSegueIdentifier, sender: self)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case openStorySegueId: #warning("Queda pendiente, primero hay que conseguir cargar info al SpriteKite, que genere nodos a partir de la data")
+//            let cell = sender as! ProjectCollectionViewCell
+//            let indexPath = self.collectionView.indexPath(for: cell)
+//              ESTO DE ABAJO ES DEL OTRO PROYECTO, PARA REFERENCIA
+//            let productView = segue.destination as? ProductDetailViewController
+//            productView?.product = products[indexPath!.row]
+//            productView?.productListCartControl = self //Referencia de éste view p/inyección
+        
+        case createSegueIdentifier:
+            let createView = segue.destination as? CreateStoryModalViewController
+            createView?.mainPageCollectionViewReference = self //Code injection
+        default:
+            print("¡Oh, Neptuno!")
+        }
+    }
+    
+}
+
+
+extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout {
+    
     //MARK: - Class Functions
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -104,102 +133,6 @@ class MainPageCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: openStorySegueId, sender: self)
-    }
-    
-    // MARK: - Utility Functions
-    
-    func loadUUIDList(){
-        print("Found \(self.storiesIds.count) items on uuid list")
-        for uuid in self.storiesIds{
-            print(uuid)
-        }
-        
-        do {
-            let fm = FileManager.default
-            let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let sourceURL = documentsDirectory.appendingPathComponent("storyList")
-            let uuidData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
-            let listOfUUID = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(uuidData) as? [UUID] ?? []
-            print("Before loading \(self.stories)")
-            self.storiesIds = listOfUUID
-            print("After loading \(self.storiesIds)")
-        } catch {
-            print("Unable to read Stories UUID List from Documents")
-        }
-    }
-    
-    func loadStories(from uuidList: [UUID]){
-        for uuid in uuidList {
-            loadSingleStory(uuid: uuid)
-        }
-    }
-    
-    func loadSingleStory(uuid: UUID){
-        do {
-            let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let sourceURL = documentsDirectoryURL.appendingPathComponent("\(uuid)")
-            let storyReadData = try Data(contentsOf: sourceURL, options: .mappedIfSafe)
-            print("Read story data: \(storyReadData)")
-            guard let readStory = try NSKeyedUnarchiver.unarchivedObject(ofClass: Story.self, from: storyReadData) else { return }
-            print(readStory)
-            //self.stories.append(readStory)
-        } catch {
-            print(error)
-        }
-    }
-   
-    func save(uuid list: [UUID]){
-        do {
-            let fm = FileManager.default
-            let documentsDirectory = try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let saveFile = documentsDirectory.appendingPathComponent("storyList")
-            let uuidData = try NSKeyedArchiver.archivedData(withRootObject: list, requiringSecureCoding: false)
-            try uuidData.write(to: saveFile)
-        } catch {
-            print("Unable to save Stories UUID List to Documents")
-        }
-            print("Saved uuid list successfully.")
-    }
-    
-    func save(a story: Story){
-        do {
-            let documentsDirectoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let saveFile = documentsDirectoryURL.appendingPathComponent("\(story.uuid)")
-            let storyData = try NSKeyedArchiver.archivedData(withRootObject: story, requiringSecureCoding: false)
-            try storyData.write(to: saveFile)
-        } catch {
-            print("Unable to save Story to Documents")
-        }
-    }
-
-    #warning("Delete this before launching for real xdddd")
-    func trollFunctionToClearMyListBeforeLaunchingAgain(){
-        self.storiesIds = []
-        self.save(uuid: [])
-    }
-    // MARK: - Actions
-    
-    @IBAction  func createProjectPressed(sender: UIButton){
-        performSegue(withIdentifier: createSegueIdentifier, sender: self)
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case openStorySegueId: #warning("Queda pendiente, primero hay que conseguir cargar info al SpriteKite, que genere nodos a partir de la data")
-//            let cell = sender as! ProjectCollectionViewCell
-//            let indexPath = self.collectionView.indexPath(for: cell)
-//              ESTO DE ABAJO ES DEL OTRO PROYECTO, PARA REFERENCIA
-//            let productView = segue.destination as? ProductDetailViewController
-//            productView?.product = products[indexPath!.row]
-//            productView?.productListCartControl = self //Referencia de éste view p/inyección
-        
-        case createSegueIdentifier:
-            let createView = segue.destination as? CreateStoryModalViewController
-            createView?.mainPageCollectionViewReference = self //Code injection
-        default:
-            print("¡Oh, Neptuno!")
-        }
     }
     
 }

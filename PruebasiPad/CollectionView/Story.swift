@@ -7,44 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Story: NSObject, NSSecureCoding {
-    static var supportsSecureCoding: Bool = true
+class Story: Object {
     
-    
-    var image: UIImage? //Image for the CollectionViewController
-    var storyName: String? //Name for the CVC
-    var root: SKStoryNode //Root for the tree structure, it contains the rest of the story nodes recursively.
-    let uuid = UUID() //Unique identifier so we never make the same data for stories with the same name
-    
-    
-    
-    init(name: String = "New Story", initialNode: SKStoryNode = SKStoryNode()){
-        self.storyName = name
-        self.root = initialNode
-    }
-    
-    // MARK: - NSCoding Protocol
-    
-    required convenience init?(coder aDecoder: NSCoder) {
-        guard let workName = aDecoder.decodeObject(of: [], forKey: "storyName")
-            else { return nil }
-        guard let root = aDecoder.decodeObject(of: SKStoryNode.self, forKey: "root")
-            else { return nil }
-        self.init(name: workName as! String, initialNode: root)
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(image, forKey: "image")
-        aCoder.encode(storyName, forKey: "storyName")
-        aCoder.encode(root, forKey: "root")
-    }
-    
-    // MARK: - Utility functions
-    
-    func setStoryImage(image: UIImage){
-        self.image = image
-    }
+    @objc dynamic var image: UIImage?
+    @objc dynamic var storyName: String?
+    @objc dynamic var root: StoryNode? 
+    @objc dynamic let uuid = UUID()
     
 }
 
