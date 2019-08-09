@@ -114,7 +114,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="SOb-Qv-pwW"/>
+                                    <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="GAh-PF-Fc1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nB-uK-Tgl">
@@ -127,7 +127,7 @@
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressCancelButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="NFq-5h-As2"/>
+                                    <action selector="pressCancelButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="bdo-Ho-llj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfZ-cT-auq">
