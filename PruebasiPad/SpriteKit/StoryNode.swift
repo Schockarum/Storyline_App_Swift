@@ -19,12 +19,8 @@ class StoryNode: Object {
     
     // MARK: - Helper functions
     func add(child: StoryNode){
-        self.childrenNodesUUID.append((child.stringUUID)!)
+        self.childrenNodesUUID.append(child.stringUUID!)
         child.parentNode = self
-    }
-    
-    func setup(){
-        self.stringUUID = UUID().uuidString
     }
 }
 

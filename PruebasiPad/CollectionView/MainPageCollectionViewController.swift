@@ -13,29 +13,30 @@ import RealmSwift
 class MainPageCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
+    private let reusableIdentifier = "ProjectCollectionViewCell"
+    
     let backgroundImageName = "main background"
     let createSegueIdentifier = "createStory"
     let openStorySegueId = "loadStory"
     let defaultSize = CGSize(width: 320, height: 510)
-    private let reusableIdentifier = "ProjectCollectionViewCell"
-
-    var stories: [Story] = []
-    var storiesIds: [UUID] = []
     
+    var stories: List<Story> = List<Story>()
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
+        print("\(Realm.Configuration.defaultConfiguration.fileURL)")
         setupView()
         setupCreateButton()
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        loadStories()
         self.collectionView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) { //We save the uuid list before changing views.
+    override func viewWillDisappear(_ animated: Bool) {
         
     }
     
@@ -71,9 +72,17 @@ class MainPageCollectionViewController: UICollectionViewController {
         createButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
-    // MARK: - NSCoding Protocol
-    override func encode(with aCoder: NSCoder) {
-        aCoder.encode(storiesIds, forKey: "uuids")
+    // MARK: - Utility Functions
+    func loadStories() {
+        let results = realm.objects(Story.self)
+        if results.count == 0 {
+            return
+        }
+        let temp = List<Story>()
+        for index in 0 ... (results.count - 1){
+            temp.append(results[index])
+        }
+        self.stories = temp
     }
     
     // MARK: - Actions
@@ -85,13 +94,8 @@ class MainPageCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case openStorySegueId: #warning("Queda pendiente, primero hay que conseguir cargar info al SpriteKite, que genere nodos a partir de la data")
-//            let cell = sender as! ProjectCollectionViewCell
-//            let indexPath = self.collectionView.indexPath(for: cell)
-//              ESTO DE ABAJO ES DEL OTRO PROYECTO, PARA REFERENCIA
-//            let productView = segue.destination as? ProductDetailViewController
-//            productView?.product = products[indexPath!.row]
-//            productView?.productListCartControl = self //Referencia de éste view p/inyección
+        case openStorySegueId:
+            break
         
         case createSegueIdentifier:
             let createView = segue.destination as? CreateStoryModalViewController
@@ -100,6 +104,8 @@ class MainPageCollectionViewController: UICollectionViewController {
             print("¡Oh, Neptuno!")
         }
     }
+    
+    
     
 }
 

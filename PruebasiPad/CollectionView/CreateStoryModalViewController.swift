@@ -6,16 +6,18 @@
 //  Copyright © 2019 Schock. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 import AVFoundation
 
 class CreateStoryModalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var createStoryImageView: UIImageView!
     @IBOutlet weak var createStoryTextField: UITextField!
-    var createdStory: Story?
     
     var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
+    let realm = try! Realm()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +33,16 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     }
     
     // MARK: - Actions
-    #warning("Al presionar el botón de creación, se debe guardar la historia.")
+    
     @IBAction func pressCreateButton(_ sender: Any) {
-
+        var myStory = Story()
+        myStory.image = myStory.compress(image: createStoryImageView.image!)
+        myStory.storyName = createStoryTextField.text ?? "New Story"
+        mainPageCollectionViewReference.stories.append(myStory)
+        try! realm.write {
+            realm.add(myStory)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func pressCancelButton(_ sender: Any) {

@@ -128,7 +128,6 @@
                                 </state>
                                 <connections>
                                     <action selector="pressCancelButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="NFq-5h-As2"/>
-                                    <action selector="pressCreateButton:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="lb4-Ox-TRD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfZ-cT-auq">
