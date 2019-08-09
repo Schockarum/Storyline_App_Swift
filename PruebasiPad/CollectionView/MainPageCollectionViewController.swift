@@ -52,7 +52,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     }
     
     func setupCreateButton(){
-        let createButton = UIButton() //CreateButton implements from UIButton so everything should work as normal
+        let createButton = UIButton()
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.setTitle("Create", for: .normal)
         createButton.setTitleColor(.black, for: .normal)
@@ -63,12 +63,12 @@ class MainPageCollectionViewController: UICollectionViewController {
         createButton.layer.shadowOpacity = 1.0
         createButton.layer.cornerRadius = 8
         createButton.layer.masksToBounds = false
-        self.view.addSubview(createButton)
-        createButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        createButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 150).isActive = true
         createButton.addTarget(self, action: #selector(MainPageCollectionViewController.createProjectPressed),for: .touchUpInside)
+        self.view.addSubview(createButton)
+        createButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        createButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
     // MARK: - NSCoding Protocol
@@ -127,7 +127,7 @@ extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
         cell.projectNameLabel.text = stories[indexPath.row].storyName
-        cell.projectImageView.image = stories[indexPath.row].image
+        cell.projectImageView.image = UIImage(data: stories[indexPath.row].image!)
         return cell
     }
     

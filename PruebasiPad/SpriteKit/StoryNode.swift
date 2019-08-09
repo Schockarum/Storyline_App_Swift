@@ -11,15 +11,20 @@ import RealmSwift
 
 class StoryNode: Object {
 
-    @objc dynamic var chapter = Chapter()
-    @objc dynamic var childrenNodes: [StoryNode] = []
+    @objc dynamic var chapter: Chapter?
+    @objc dynamic var stringUUID: String?
+    var childrenNodesUUID = List<String>()
     @objc dynamic weak var parentNode: StoryNode?
     
-    // MARK: - Helper functions
     
+    // MARK: - Helper functions
     func add(child: StoryNode){
-        childrenNodes.append(child)
+        self.childrenNodesUUID.append((child.stringUUID)!)
         child.parentNode = self
+    }
+    
+    func setup(){
+        self.stringUUID = UUID().uuidString
     }
 }
 

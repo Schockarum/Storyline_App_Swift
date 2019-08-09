@@ -11,11 +11,19 @@ import RealmSwift
 
 class Story: Object {
     
-    @objc dynamic var image: UIImage?
+    @objc dynamic var image: Data?
     @objc dynamic var storyName: String?
     @objc dynamic var root: StoryNode? 
     @objc dynamic let uuid = UUID()
     
+    // MARK: - Helper Functions
+    func compress(image: UIImage) -> Data {
+        return (image.jpegData(compressionQuality: 0.95)!)
+    }
+    
+    func buildImageFrom(data: Data) -> UIImage {
+        return (UIImage(data: data)!)
+    }
 }
 
 /*Story is the class responsible of storing the starting data of a story, such as the title, the associed image to it and the root node of it.
