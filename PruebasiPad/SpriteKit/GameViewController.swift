@@ -12,6 +12,9 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
+    var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
+    var storyFromMainReference: Story?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

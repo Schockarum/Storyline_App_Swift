@@ -27,6 +27,7 @@
                         <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DnT-y8-wr3">
                             <rect key="frame" x="0.0" y="-70" width="1366" height="1024"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <gestureRecognizers/>
                         </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MyCell" reuseIdentifier="ProjectCollectionViewCell" id="ARz-7n-ZlW" customClass="ProjectCollectionViewCell" customModule="Storyline" customModuleProvider="target">
@@ -37,7 +38,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lNf-So-EKF">
-                                            <rect key="frame" x="30" y="0.0" width="522" height="446"/>
+                                            <rect key="frame" x="30" y="60" width="522" height="386"/>
+                                            <gestureRecognizers/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-BA-cYT">
                                             <rect key="frame" x="48" y="28" width="506" height="45"/>
@@ -58,8 +60,8 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="20" id="Ms0-3s-Ob4"/>
                                     <constraint firstAttribute="trailing" secondItem="lNf-So-EKF" secondAttribute="trailing" constant="30" id="XPU-cW-MCK"/>
                                     <constraint firstAttribute="bottom" secondItem="lNf-So-EKF" secondAttribute="bottom" constant="10" id="bM6-GD-0NB"/>
-                                    <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" id="c3B-oq-Uij"/>
                                     <constraint firstItem="lNf-So-EKF" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leading" constant="30" id="m2r-qX-Yt8"/>
+                                    <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" constant="60" id="p4U-eX-0N6"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="projectImageView" destination="lNf-So-EKF" id="oUQ-8t-xPV"/>

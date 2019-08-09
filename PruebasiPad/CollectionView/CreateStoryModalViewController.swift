@@ -13,7 +13,8 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
 
     @IBOutlet weak var createStoryImageView: UIImageView!
     @IBOutlet weak var createStoryTextField: UITextField!
-    
+    var myStory = Story()
+
     var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
     let realm = try! Realm()
     
@@ -35,7 +36,6 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     // MARK: - Actions
     
     @IBAction func pressCreateButton(_ sender: Any) {
-        var myStory = Story()
         myStory.image = myStory.compress(image: createStoryImageView.image!)
         myStory.storyName = createStoryTextField.text ?? "New Story"
         mainPageCollectionViewReference.stories.append(myStory)

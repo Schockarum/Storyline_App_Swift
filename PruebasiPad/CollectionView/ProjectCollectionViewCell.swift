@@ -24,8 +24,25 @@ class ProjectCollectionViewCell: UICollectionViewCell{
         //initialization code
         projectImageView.image = UIImage(named: "ivory paper")
         projectImageView.layer.cornerRadius = 10
+        projectImageView.isUserInteractionEnabled = true
         projectNameLabel.text = "New Story"
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender: )))
+        projectImageView.addGestureRecognizer(longPress)
         }
+    
+    override var canBecomeFirstResponder: Bool{
+        return true
+    }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer){
+        if sender.state == .began {
+            let menu = UIMenuController.shared
+            becomeFirstResponder()
+            
+            
+        }
+    }
 }
 
 /*Our custom Colection View Cell, it has an image view and a label so we can present the Story name and image (if there's any) on our app's main page */

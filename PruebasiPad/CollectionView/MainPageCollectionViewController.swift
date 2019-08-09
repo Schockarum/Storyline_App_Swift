@@ -90,13 +90,15 @@ class MainPageCollectionViewController: UICollectionViewController {
     @IBAction  func createProjectPressed(sender: UIButton){
         performSegue(withIdentifier: createSegueIdentifier, sender: self)
     }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case openStorySegueId:
-            break
-        
+            let gameView = segue.destination as? GameViewController
+            gameView?.mainPageCollectionViewReference = self //Code injection
+            
         case createSegueIdentifier:
             let createView = segue.destination as? CreateStoryModalViewController
             createView?.mainPageCollectionViewReference = self //Code injection

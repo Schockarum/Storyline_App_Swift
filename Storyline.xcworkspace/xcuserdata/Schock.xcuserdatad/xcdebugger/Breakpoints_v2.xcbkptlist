@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "587012456.457357"
+            timestampString = "587019277.341187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -45,7 +45,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/MainPageCollectionViewController.swift"
-            timestampString = "587012456.457702"
+            timestampString = "587019277.341282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -70,7 +70,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/CollectionView/CreateStoryModalViewController.swift"
-            timestampString = "587012456.457783"
+            timestampString = "587019277.341332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -82,6 +82,31 @@
                   ActionExtensionID = "Xcode.BreakpointAction.Log">
                   <ActionContent
                      message = "Adding @myStory.storyName@ to Realm database"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "PruebasiPad/CollectionView/ProjectCollectionViewCell.swift"
+            timestampString = "587019380.2895091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "handleLongPress(sender:)"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "Long press detected"
                      conveyanceType = "0">
                   </ActionContent>
                </BreakpointActionProxy>
