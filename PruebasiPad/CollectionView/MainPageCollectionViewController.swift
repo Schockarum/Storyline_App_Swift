@@ -73,6 +73,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Utility Functions
+    
     func loadStories() {
         do {
             let realm = try Realm()
@@ -98,6 +99,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case openStorySegueId:

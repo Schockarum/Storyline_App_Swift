@@ -155,7 +155,7 @@
                                     <action selector="switchImage:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="PPV-Ce-fl0"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ç" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow node" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
                                 <rect key="frame" x="200" y="147" width="450" height="750"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="750" id="lIc-xq-F5s"/>
@@ -293,9 +293,9 @@
     </scenes>
     <resources>
         <image name="black node" width="300" height="289"/>
-        <image name="ç" width="16" height="16"/>
         <image name="green banner 2" width="1340" height="336"/>
         <image name="ivory paper" width="3888" height="2592"/>
         <image name="picture" width="30" height="30"/>
+        <image name="yellow node" width="612" height="623"/>
     </resources>
 </document>
