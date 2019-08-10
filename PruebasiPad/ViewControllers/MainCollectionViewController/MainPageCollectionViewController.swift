@@ -24,7 +24,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     let defaultSize = CGSize(width: 320, height: 510)
     
     var stories: List<Story> = List<Story>()
-    var selectedStoryIndex = 0
+    var selectedStoryUUID: String = ""
     
     var editionIsOn: Bool = false
     var deletionIsOn: Bool = false
@@ -81,6 +81,27 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     // MARK: - Utility Functions
     
+    func deleteAlert(indexPath: Int){
+        let alertController = UIAlertController(title: "Delete Story?", message: "Are you sure?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Keep story", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Delete story", style: .destructive, handler: { (action) in
+            do {
+                let realm = try Realm()
+                let result = realm.objects(Story.self).filter(NSPredicate(format: "uuid CONTAINS %@", self.selectedStoryUUID))
+                try realm.write {
+                    realm.delete(result)
+                }
+                self.stories.remove(at: indexPath)
+                self.collectionView.reloadData()
+            } catch {
+                print("Error locating story to delete")
+                return
+            }
+        }))
+        self.present(alertController, animated: true, completion: nil)
+        self.switchDeletion()
+    }
+    
     func loadStories() {
         do {
             let realm = try Realm()
@@ -98,7 +119,7 @@ class MainPageCollectionViewController: UICollectionViewController {
         }
     }
     
-    func switchToEdition(){
+    func switchEdition(){
         editionIsOn = !editionIsOn
         if editionIsOn {
             navigationItem.title = "Select the story to edit"
@@ -109,7 +130,7 @@ class MainPageCollectionViewController: UICollectionViewController {
         }
     }
     
-    func switchToDeletion(){
+    func switchDeletion(){
         deletionIsOn = !deletionIsOn
         if deletionIsOn {
             navigationItem.title = "Select the story to delete"
@@ -127,11 +148,11 @@ class MainPageCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func deleteStoryButtonPressed(_ sender: Any) {
-        switchToDeletion()
+        switchDeletion()
     }
     
     @IBAction func editStoryButtonPressed(_ sender: Any) {
-        switchToEdition()
+        switchEdition()
     }
     
     // MARK: - Navigation
@@ -146,19 +167,19 @@ class MainPageCollectionViewController: UICollectionViewController {
             let createView = segue.destination as? CreateStoryModalViewController
             createView?.mainPageCollectionViewReference = self //Code injection
         
-        case editStorySegueId:
-            let editView = segue.destination as? EditStoryModalViewController
-            editView?.mainPageCollectionViewReference = self //code injection
-            editView?.storyToEdit = stories[selectedStoryIndex]
+//        case editStorySegueId:
+//            let editView = segue.destination as? EditStoryModalViewController
+//            editView?.mainPageCollectionViewReference = self //code injection
+//            editView?.storyToEdit = stories[selectedStoryIndex]
             
         default:
             if editionIsOn {
                 #warning("Si esto se cumple, debemos ir al segue de edicion y mandarle los datos de la historia")
             }
-            }
             print("¡Oh, Neptuno!")
         }
     }
+}
 
 
 
@@ -184,15 +205,25 @@ extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout 
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        selectedStoryIndex = indexPath.row
-        cell.cellStory = stories[selectedStoryIndex]
-        cell.storyTitleLabel.text = stories[selectedStoryIndex].storyName
-        cell.storyImageView.image = UIImage(data: stories[selectedStoryIndex].image!)
+        cell.cellStory = stories[indexPath.row]
+        cell.storyTitleLabel.text = stories[indexPath.row].storyName
+        cell.storyImageView.image = UIImage(data: stories[indexPath.row].image!)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: openStorySegueId, sender: self)
+        selectedStoryUUID = stories[indexPath.row].uuid
+        switch true {
+        case deletionIsOn:
+            deleteAlert(indexPath: indexPath.row)
+            self.collectionView.reloadData()
+            return
+        case editionIsOn:
+            #warning("Logica para editar una historia")
+            switchEdition()
+            return
+        default:
+            self.performSegue(withIdentifier: openStorySegueId, sender: self)
+        }
     }
 }
-

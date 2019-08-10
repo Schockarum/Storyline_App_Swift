@@ -129,19 +129,19 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ivory paper" translatesAutoresizingMaskIntoConstraints="NO" id="tia-mV-gsA">
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a name for your story" textAlignment="justified" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eWU-xP-vNe">
-                                <rect key="frame" x="700" y="320" width="566" height="70"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Story's name" textAlignment="justified" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eWU-xP-vNe">
+                                <rect key="frame" x="600" y="320" width="666" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="Pam-xD-iSu"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="27"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-TY-GQL">
-                                <rect key="frame" x="733" y="590" width="500" height="100"/>
+                                <rect key="frame" x="733" y="590" width="400" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="IOk-Zv-AFg"/>
+                                    <constraint firstAttribute="width" constant="400" id="IOk-Zv-AFg"/>
                                     <constraint firstAttribute="height" constant="100" id="qt5-2t-TFe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nB-uK-Tgl">
-                                <rect key="frame" x="933" y="740" width="100" height="50"/>
+                                <rect key="frame" x="883" y="740" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="T9H-nF-xxl"/>
                                     <constraint firstAttribute="width" constant="100" id="vq4-By-nzC"/>
@@ -166,7 +166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfZ-cT-auq">
-                                <rect key="frame" x="700" y="400" width="150" height="100"/>
+                                <rect key="frame" x="600" y="400" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="efk-ml-lYu"/>
                                     <constraint firstAttribute="width" constant="150" id="xBm-mv-fHc"/>
@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow node" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
-                                <rect key="frame" x="200" y="147" width="450" height="750"/>
+                                <rect key="frame" x="100" y="147" width="450" height="750"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="750" id="lIc-xq-F5s"/>
                                     <constraint firstAttribute="width" constant="450" id="rI4-pS-SWb"/>
@@ -200,7 +200,7 @@
                             <constraint firstItem="8nB-uK-Tgl" firstAttribute="centerX" secondItem="v3I-TY-GQL" secondAttribute="centerX" id="MYL-Xq-52l"/>
                             <constraint firstItem="JFa-iQ-sY2" firstAttribute="centerY" secondItem="wMe-xu-CMp" secondAttribute="centerY" id="VWp-M8-SS9"/>
                             <constraint firstItem="eWU-xP-vNe" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" constant="300" id="ZwS-OD-wBs"/>
-                            <constraint firstItem="JFa-iQ-sY2" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" constant="200" id="h1e-1d-hOa"/>
+                            <constraint firstItem="JFa-iQ-sY2" firstAttribute="leading" secondItem="wMe-xu-CMp" secondAttribute="leading" constant="100" id="h1e-1d-hOa"/>
                             <constraint firstItem="tia-mV-gsA" firstAttribute="bottom" secondItem="wMe-xu-CMp" secondAttribute="bottom" id="sX9-i0-3YJ"/>
                             <constraint firstItem="wMe-xu-CMp" firstAttribute="trailing" secondItem="eWU-xP-vNe" secondAttribute="trailing" constant="100" id="tNU-WU-Fh3"/>
                             <constraint firstItem="tia-mV-gsA" firstAttribute="top" secondItem="wMe-xu-CMp" secondAttribute="top" id="zQh-e0-TEE"/>
@@ -326,7 +326,7 @@
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter New Story Name" textAlignment="justified" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-3S-lIx">
-                                <rect key="frame" x="700" y="320" width="566" height="70"/>
+                                <rect key="frame" x="600" y="320" width="666" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="fhc-aD-Kfy"/>
                                 </constraints>
@@ -335,10 +335,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ls-JI-Ryd">
-                                <rect key="frame" x="733" y="590" width="500" height="100"/>
+                                <rect key="frame" x="733" y="590" width="400" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="89A-85-iuy"/>
-                                    <constraint firstAttribute="width" constant="500" id="IS0-EY-3vt"/>
+                                    <constraint firstAttribute="width" constant="400" id="IS0-EY-3vt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="Save changes" backgroundImage="green banner 4">
@@ -349,7 +349,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-5d-3BQ">
-                                <rect key="frame" x="933" y="740" width="100" height="50"/>
+                                <rect key="frame" x="883" y="740" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ahq-Mr-a1A"/>
                                     <constraint firstAttribute="height" constant="50" id="bhI-0p-zPm"/>
@@ -362,7 +362,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBp-2W-mVf">
-                                <rect key="frame" x="700" y="400" width="150" height="100"/>
+                                <rect key="frame" x="600" y="400" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CfQ-OJ-j3S"/>
                                     <constraint firstAttribute="width" constant="150" id="UQm-TC-wvz"/>
@@ -376,7 +376,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black node" translatesAutoresizingMaskIntoConstraints="NO" id="imJ-9A-B6w">
-                                <rect key="frame" x="200" y="147" width="450" height="750"/>
+                                <rect key="frame" x="100" y="147" width="450" height="750"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="750" id="Rvv-s5-UNZ"/>
                                     <constraint firstAttribute="width" constant="450" id="dpP-1c-u5o"/>
@@ -399,7 +399,7 @@
                             <constraint firstItem="9Rf-5d-3BQ" firstAttribute="centerX" secondItem="5ls-JI-Ryd" secondAttribute="centerX" id="nfZ-F1-vNS"/>
                             <constraint firstItem="DOQ-ir-Sd0" firstAttribute="leading" secondItem="KW4-F4-Tjk" secondAttribute="leading" id="qXU-vk-T9k"/>
                             <constraint firstItem="tCa-3S-lIx" firstAttribute="top" secondItem="KW4-F4-Tjk" secondAttribute="top" constant="300" id="u48-Gg-Mmk"/>
-                            <constraint firstItem="imJ-9A-B6w" firstAttribute="leading" secondItem="KW4-F4-Tjk" secondAttribute="leading" constant="200" id="wdh-DX-5aG"/>
+                            <constraint firstItem="imJ-9A-B6w" firstAttribute="leading" secondItem="KW4-F4-Tjk" secondAttribute="leading" constant="100" id="wdh-DX-5aG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KW4-F4-Tjk"/>
                     </view>
