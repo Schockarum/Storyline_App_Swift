@@ -1,8 +1,8 @@
 //
-//  CreateStoryModalViewController.swift
+//  EditStoryModalViewController.swift
 //  Storyline
 //
-//  Created by Luis Mauricio Esparza Vazquez on 8/4/19.
+//  Created by Luis Mauricio Esparza Vazquez on 8/10/19.
 //  Copyright © 2019 Schock. All rights reserved.
 //
 
@@ -10,15 +10,13 @@ import RealmSwift
 import AVFoundation
 
 class CreateStoryModalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var createStoryImageView: UIImageView!
     @IBOutlet weak var createStoryTextField: UITextField!
     var myStory = Story()
-
+    
     var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
     let realm = try! Realm()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +24,7 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     }
     
     // MARK: - Setup Functions
-
+    
     func setupView(){
         view.backgroundColor = .clear
         createStoryTextField.backgroundColor = .clear
@@ -54,6 +52,7 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     
     @IBAction func pressCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func switchImage(_ sender: Any) {
@@ -79,16 +78,6 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
         dismiss(animated:true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 /*This view controller has to get the user info for a new story, this is an image and a name.

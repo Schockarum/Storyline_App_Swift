@@ -12,15 +12,21 @@ import RealmSwift
 
 class MainPageCollectionViewController: UICollectionViewController {
     
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     private let reusableIdentifier = "ProjectCollectionViewCell"
-    
     let backgroundImageName = "white background"
     let createSegueIdentifier = "createStory"
     let openStorySegueId = "loadStory"
+    let editStorySegueId = "editStory"
     let defaultSize = CGSize(width: 320, height: 510)
     
     var stories: List<Story> = List<Story>()
+    var selectedStoryIndex = 0
+    
+    var editionIsOn: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +42,6 @@ class MainPageCollectionViewController: UICollectionViewController {
         self.collectionView.reloadData()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
     //MARK: - Setup Functions
     
     func setupView(){
@@ -50,6 +52,8 @@ class MainPageCollectionViewController: UICollectionViewController {
         mainBackgroundImageView.alpha = 0.8
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Library"
+        
+        
     }
     
     func setupCreateButton(){
@@ -96,7 +100,12 @@ class MainPageCollectionViewController: UICollectionViewController {
     @IBAction  func createProjectPressed(sender: UIButton){
         performSegue(withIdentifier: createSegueIdentifier, sender: self)
     }
-
+    
+    @IBAction func deleteStoryButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func editStoryButtonPressed(_ sender: Any) {
+    }
     
     // MARK: - Navigation
     
@@ -109,13 +118,16 @@ class MainPageCollectionViewController: UICollectionViewController {
         case createSegueIdentifier:
             let createView = segue.destination as? CreateStoryModalViewController
             createView?.mainPageCollectionViewReference = self //Code injection
+            
+        case editStorySegueId:
+            let editView = segue.destination as? EditStoryModalViewController
+            editView?.mainPageCollectionViewReference = self //code injection
+            editView?.storyToEdit = stories[selectedStoryIndex]
+            
         default:
             print("¡Oh, Neptuno!")
         }
     }
-    
-    
-    
 }
 
 
@@ -141,13 +153,15 @@ extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout 
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        cell.projectNameLabel.text = stories[indexPath.row].storyName
-        cell.projectImageView.image = UIImage(data: stories[indexPath.row].image!)
+        selectedStoryIndex = indexPath.row
+        cell.cellStory = stories[selectedStoryIndex]
+        cell.storyTitleLabel.text = stories[selectedStoryIndex].storyName
+        cell.storyImageView.image = UIImage(data: stories[selectedStoryIndex].image!)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: openStorySegueId, sender: self)
     }
-    
 }
+

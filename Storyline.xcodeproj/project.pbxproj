@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D001D3522FF3C7700B8F1A9 /* CreateStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D001D3422FF3C7700B8F1A9 /* CreateStoryViewController.swift */; };
 		7D0E2B2322EE6F4300BA9811 /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */; };
 		7D0E2B2922EE8F3900BA9811 /* MainPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */; };
 		7D258D9D22EFF49E00F48E88 /* StoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D258D9C22EFF49E00F48E88 /* StoryNode.swift */; };
 		7D4FDD2922F78B5700BA39A1 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2822F78B5700BA39A1 /* Chapter.swift */; };
 		7D4FDD2D22F799D500BA39A1 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */; };
 		7D4FDD3222F7A38B00BA39A1 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3122F7A38B00BA39A1 /* Story.swift */; };
-		7D4FDD3422F7B4A900BA39A1 /* CreateStoryModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3322F7B4A900BA39A1 /* CreateStoryModalViewController.swift */; };
+		7D4FDD3422F7B4A900BA39A1 /* EditStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3322F7B4A900BA39A1 /* EditStoryViewController.swift */; };
 		7D4FDD3622F7D71500BA39A1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3522F7D71500BA39A1 /* Document.swift */; };
 		7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA38EC22E7587D00268FEC /* AppDelegate.swift */; };
 		7DAA38F222E7587D00268FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F022E7587D00268FEC /* Main.storyboard */; };
@@ -27,13 +28,14 @@
 
 /* Begin PBXFileReference section */
 		593E7C92F10507EBC497E52D /* Pods_Storyline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storyline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D001D3422FF3C7700B8F1A9 /* CreateStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStoryViewController.swift; sourceTree = "<group>"; };
 		7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewController.swift; sourceTree = "<group>"; };
 		7D258D9C22EFF49E00F48E88 /* StoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryNode.swift; sourceTree = "<group>"; };
 		7D4FDD2822F78B5700BA39A1 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		7D4FDD3122F7A38B00BA39A1 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		7D4FDD3322F7B4A900BA39A1 /* CreateStoryModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStoryModalViewController.swift; sourceTree = "<group>"; };
+		7D4FDD3322F7B4A900BA39A1 /* EditStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryViewController.swift; sourceTree = "<group>"; };
 		7D4FDD3522F7D71500BA39A1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7DAA38E922E7587D00268FEC /* Storyline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storyline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAA38EC22E7587D00268FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,12 +71,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7D001D3622FF4E7600B8F1A9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7D4FDD2822F78B5700BA39A1 /* Chapter.swift */,
+				7D258D9C22EFF49E00F48E88 /* StoryNode.swift */,
+				7D4FDD3122F7A38B00BA39A1 /* Story.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7D001D3722FF4EC400B8F1A9 /* MainCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */,
+				7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */,
+			);
+			path = MainCollectionViewController;
+			sourceTree = "<group>";
+		};
 		7D258D9922EFF43300F48E88 /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
 				7DADBAB522F54B880018DCED /* Actions.sks */,
-				7D4FDD2822F78B5700BA39A1 /* Chapter.swift */,
-				7D258D9C22EFF49E00F48E88 /* StoryNode.swift */,
 				7DADBADF22F561110018DCED /* NodeMapScene.swift */,
 				7DADBADD22F5608F0018DCED /* NodeMapScene.sks */,
 				7DADBAB322F54B840018DCED /* GameViewController.swift */,
@@ -113,26 +132,26 @@
 			isa = PBXGroup;
 			children = (
 				7DAA38EC22E7587D00268FEC /* AppDelegate.swift */,
-				7D4FDD2E22F799DF00BA39A1 /* TextEditorViewController */,
-				7D258D9922EFF43300F48E88 /* SpriteKit */,
-				7DEEAD5722EC09170009BF1F /* CollectionView */,
-				7DAA38F022E7587D00268FEC /* Main.storyboard */,
+				7DEEAD5722EC09170009BF1F /* ViewControllers */,
+				7D001D3622FF4E7600B8F1A9 /* Classes */,
 				7DAA38F522E7587E00268FEC /* LaunchScreen.storyboard */,
+				7DAA38F022E7587D00268FEC /* Main.storyboard */,
 				7DAA38F822E7587E00268FEC /* Info.plist */,
 				7DAA38F322E7587E00268FEC /* Assets.xcassets */,
 			);
 			path = PruebasiPad;
 			sourceTree = "<group>";
 		};
-		7DEEAD5722EC09170009BF1F /* CollectionView */ = {
+		7DEEAD5722EC09170009BF1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7D0E2B2822EE8F3900BA9811 /* MainPageCollectionViewController.swift */,
-				7D0E2B2222EE6F4300BA9811 /* ProjectCollectionViewCell.swift */,
-				7D4FDD3122F7A38B00BA39A1 /* Story.swift */,
-				7D4FDD3322F7B4A900BA39A1 /* CreateStoryModalViewController.swift */,
+				7D258D9922EFF43300F48E88 /* SpriteKit */,
+				7D4FDD2E22F799DF00BA39A1 /* TextEditorViewController */,
+				7D001D3722FF4EC400B8F1A9 /* MainCollectionViewController */,
+				7D001D3422FF3C7700B8F1A9 /* CreateStoryViewController.swift */,
+				7D4FDD3322F7B4A900BA39A1 /* EditStoryViewController.swift */,
 			);
-			path = CollectionView;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		8049A3C9FAF79DE53DDA5C65 /* Pods */ = {
@@ -265,9 +284,10 @@
 				7D4FDD3222F7A38B00BA39A1 /* Story.swift in Sources */,
 				7D0E2B2922EE8F3900BA9811 /* MainPageCollectionViewController.swift in Sources */,
 				7D4FDD3622F7D71500BA39A1 /* Document.swift in Sources */,
-				7D4FDD3422F7B4A900BA39A1 /* CreateStoryModalViewController.swift in Sources */,
+				7D4FDD3422F7B4A900BA39A1 /* EditStoryViewController.swift in Sources */,
 				7D0E2B2322EE6F4300BA9811 /* ProjectCollectionViewCell.swift in Sources */,
 				7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */,
+				7D001D3522FF3C7700B8F1A9 /* CreateStoryViewController.swift in Sources */,
 				7D4FDD2D22F799D500BA39A1 /* TextEditorViewController.swift in Sources */,
 				7D258D9D22EFF49E00F48E88 /* StoryNode.swift in Sources */,
 				7D4FDD2922F78B5700BA39A1 /* Chapter.swift in Sources */,

@@ -13,7 +13,6 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var chapterNameLabel: UITextField!
     @IBOutlet weak var textView: UITextView!
     
-    #warning("Antes usabamos un document, ahora necesitamos guardar lo que se modifique del text view en un Chapter")
     var document: Document?
     
     override func viewDidLoad() {
