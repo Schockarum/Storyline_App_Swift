@@ -39,7 +39,7 @@ class ProjectCollectionViewCell: UICollectionViewCell{
         if sender.state == .began {
             let menu = UIMenuController.shared
             becomeFirstResponder()
-            
+            //Action after long press is detected
             
         }
     }

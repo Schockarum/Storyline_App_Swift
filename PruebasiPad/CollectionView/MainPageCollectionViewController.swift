@@ -21,11 +21,11 @@ class MainPageCollectionViewController: UICollectionViewController {
     let defaultSize = CGSize(width: 320, height: 510)
     
     var stories: List<Story> = List<Story>()
-    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(Realm.Configuration.defaultConfiguration.fileURL)")
+        let realm = try! Realm()
+        print("\(String(describing: Realm.Configuration.defaultConfiguration.fileURL))")
         setupView()
         setupCreateButton()
         }
@@ -33,6 +33,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadStories()
+        #warning("Después de migrar el esquema de la BD, hay que cargar nuevamente las historias.")
         self.collectionView.reloadData()
     }
     
@@ -74,15 +75,20 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     // MARK: - Utility Functions
     func loadStories() {
-        let results = realm.objects(Story.self)
-        if results.count == 0 {
-            return
+        do {
+            let realm = try Realm()
+            let results = realm.objects(Story.self)
+            let temp = List<Story>()
+            if results.count == 0 {
+                return
+            }
+            for index in 0 ... (results.count - 1){
+                temp.append(results[index])
+            }
+            self.stories = temp
+        } catch {
+            print("Valio verga leeyendo historias")
         }
-        let temp = List<Story>()
-        for index in 0 ... (results.count - 1){
-            temp.append(results[index])
-        }
-        self.stories = temp
     }
     
     // MARK: - Actions

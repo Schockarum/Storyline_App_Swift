@@ -13,7 +13,7 @@ class Chapter: Object {
 
 
     var chapterTitle: String?
-    var contentsOfChapter: NSAttributedString?
+    var contentsOfChapter: String?
 
 }
 

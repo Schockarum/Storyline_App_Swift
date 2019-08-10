@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        #warning("function to delete realm database")
+//        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+//        let realmURLs = [
+//            realmURL,
+//            realmURL.appendingPathExtension("lock"),
+//            realmURL.appendingPathExtension("note"),
+//            realmURL.appendingPathExtension("management")
+//        ]
+//        for URL in realmURLs {
+//            do {
+//                try FileManager.default.removeItem(at: URL)
+//            } catch {
+//                // handle error
+//            }
+//        }
+//
+//        let realm = try! Realm()
         return true
     }
 

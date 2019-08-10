@@ -39,8 +39,12 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
         myStory.image = myStory.compress(image: createStoryImageView.image!)
         myStory.storyName = createStoryTextField.text ?? "New Story"
         mainPageCollectionViewReference.stories.append(myStory)
-        try! realm.write {
-            realm.add(myStory)
+        do {
+            try realm.write {
+                realm.add(myStory)
+            }
+        } catch {
+            print("Error writing story to database")
         }
         dismiss(animated: true, completion: nil)
     }
