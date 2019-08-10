@@ -32,8 +32,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadStories()
-        #warning("Después de migrar el esquema de la BD, hay que cargar nuevamente las historias.")
+//        loadStories()
         self.collectionView.reloadData()
     }
     

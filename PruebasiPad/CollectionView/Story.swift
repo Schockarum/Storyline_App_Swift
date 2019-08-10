@@ -14,6 +14,7 @@ class Story: Object {
     @objc dynamic var image: Data?
     @objc dynamic var storyName: String?
     @objc dynamic var root: StoryNode?
+    @objc dynamic var uuid: String = UUID().uuidString
     
     // MARK: - Helper Functions
     func compress(image: UIImage) -> Data {
