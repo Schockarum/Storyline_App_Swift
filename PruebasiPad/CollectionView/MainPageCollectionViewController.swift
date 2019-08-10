@@ -15,7 +15,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     private let reusableIdentifier = "ProjectCollectionViewCell"
     
-    let backgroundImageName = "main background"
+    let backgroundImageName = "white background"
     let createSegueIdentifier = "createStory"
     let openStorySegueId = "loadStory"
     let defaultSize = CGSize(width: 320, height: 510)

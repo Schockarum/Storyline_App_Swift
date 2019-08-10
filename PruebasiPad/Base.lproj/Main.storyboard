@@ -38,30 +38,39 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lNf-So-EKF">
-                                            <rect key="frame" x="30" y="60" width="522" height="386"/>
+                                            <rect key="frame" x="30" y="40" width="522" height="406"/>
                                             <gestureRecognizers/>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black node" translatesAutoresizingMaskIntoConstraints="NO" id="E2m-7Q-NOb">
+                                            <rect key="frame" x="8" y="28" width="566" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="nf0-c6-Fbd"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-BA-cYT">
-                                            <rect key="frame" x="48" y="28" width="506" height="45"/>
+                                            <rect key="frame" x="28" y="28" width="526" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="snR-DA-Axf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="35"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="40"/>
+                                            <color key="textColor" red="0.8707143236185122" green="1" blue="0.93837463867625148" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
-                                            <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="shadowColor" red="0.15794696829999999" green="0.21572730309999999" blue="0.2610913212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <size key="shadowOffset" width="-2" height="2"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="XwQ-BA-cYT" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="topMargin" id="4Ph-Ui-Rr3"/>
-                                    <constraint firstItem="XwQ-BA-cYT" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" constant="40" id="9s2-tL-gjI"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="E2m-7Q-NOb" secondAttribute="trailing" id="7jH-1P-y35"/>
+                                    <constraint firstItem="XwQ-BA-cYT" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" constant="20" id="9s2-tL-gjI"/>
+                                    <constraint firstItem="E2m-7Q-NOb" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="topMargin" id="EWQ-Sz-VlF"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="20" id="Ms0-3s-Ob4"/>
                                     <constraint firstAttribute="trailing" secondItem="lNf-So-EKF" secondAttribute="trailing" constant="30" id="XPU-cW-MCK"/>
+                                    <constraint firstItem="E2m-7Q-NOb" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" id="ZxW-WT-mlS"/>
                                     <constraint firstAttribute="bottom" secondItem="lNf-So-EKF" secondAttribute="bottom" constant="10" id="bM6-GD-0NB"/>
                                     <constraint firstItem="lNf-So-EKF" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leading" constant="30" id="m2r-qX-Yt8"/>
-                                    <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" constant="60" id="p4U-eX-0N6"/>
+                                    <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" constant="40" id="p4U-eX-0N6"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="projectImageView" destination="lNf-So-EKF" id="oUQ-8t-xPV"/>
@@ -146,7 +155,7 @@
                                     <action selector="switchImage:" destination="7ta-Wr-KsN" eventType="touchUpInside" id="PPV-Ce-fl0"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="texture5" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ç" translatesAutoresizingMaskIntoConstraints="NO" id="JFa-iQ-sY2">
                                 <rect key="frame" x="200" y="147" width="450" height="750"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="750" id="lIc-xq-F5s"/>
@@ -283,9 +292,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="black node" width="300" height="289"/>
+        <image name="ç" width="16" height="16"/>
         <image name="green banner 2" width="1340" height="336"/>
         <image name="ivory paper" width="3888" height="2592"/>
         <image name="picture" width="30" height="30"/>
-        <image name="texture5" width="4000" height="3000"/>
     </resources>
 </document>
