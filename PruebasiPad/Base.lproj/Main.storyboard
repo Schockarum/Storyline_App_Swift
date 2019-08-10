@@ -95,18 +95,16 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Library" id="hrG-Lt-sY3">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Edit Story" image="pencil" id="CKd-t7-NKc">
-                                <connections>
-                                    <action selector="editStoryButtonPressed:" destination="fPO-wk-YSc" id="OgZ-fH-DP0"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="trash" id="bdT-pR-ZWX">
-                                <connections>
-                                    <action selector="deleteStoryButtonPressed:" destination="fPO-wk-YSc" id="wab-aR-0fm"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="trash" id="bdT-pR-ZWX">
+                            <connections>
+                                <action selector="deleteStoryButtonPressed:" destination="fPO-wk-YSc" id="wab-aR-0fm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit Story" image="pencil" id="CKd-t7-NKc">
+                            <connections>
+                                <action selector="editStoryButtonPressed:" destination="fPO-wk-YSc" id="OgZ-fH-DP0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="deleteButton" destination="bdT-pR-ZWX" id="qQn-AA-0wi"/>

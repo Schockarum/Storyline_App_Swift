@@ -27,17 +27,18 @@ class MainPageCollectionViewController: UICollectionViewController {
     var selectedStoryIndex = 0
     
     var editionIsOn: Bool = false
+    var deletionIsOn: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
         print("\(String(describing: Realm.Configuration.defaultConfiguration.fileURL))")
-        setupView()
         setupCreateButton()
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setupView()
         loadStories()
         self.collectionView.reloadData()
     }
@@ -52,8 +53,10 @@ class MainPageCollectionViewController: UICollectionViewController {
         mainBackgroundImageView.alpha = 0.8
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Library"
-        
-        
+        editionIsOn = false
+        deletionIsOn = false
+        deleteButton.image = UIImage(named: "trash")
+        editButton.image = UIImage(named: "pencil")
     }
     
     func setupCreateButton(){
@@ -95,6 +98,28 @@ class MainPageCollectionViewController: UICollectionViewController {
         }
     }
     
+    func switchToEdition(){
+        editionIsOn = !editionIsOn
+        if editionIsOn {
+            navigationItem.title = "Select the story to edit"
+            deleteButton.image = UIImage()
+        } else {
+            navigationItem.title = "Library"
+            deleteButton.image = UIImage(named: "trash")
+        }
+    }
+    
+    func switchToDeletion(){
+        deletionIsOn = !deletionIsOn
+        if deletionIsOn {
+            navigationItem.title = "Select the story to delete"
+            editButton.image = UIImage()
+        } else {
+            navigationItem.title = "Library"
+            editButton.image = UIImage(named: "pencil")
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction  func createProjectPressed(sender: UIButton){
@@ -102,9 +127,11 @@ class MainPageCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func deleteStoryButtonPressed(_ sender: Any) {
+        switchToDeletion()
     }
     
     @IBAction func editStoryButtonPressed(_ sender: Any) {
+        switchToEdition()
     }
     
     // MARK: - Navigation
@@ -118,17 +145,21 @@ class MainPageCollectionViewController: UICollectionViewController {
         case createSegueIdentifier:
             let createView = segue.destination as? CreateStoryModalViewController
             createView?.mainPageCollectionViewReference = self //Code injection
-            
+        
         case editStorySegueId:
             let editView = segue.destination as? EditStoryModalViewController
             editView?.mainPageCollectionViewReference = self //code injection
             editView?.storyToEdit = stories[selectedStoryIndex]
             
         default:
+            if editionIsOn {
+                #warning("Si esto se cumple, debemos ir al segue de edicion y mandarle los datos de la historia")
+            }
+            }
             print("¡Oh, Neptuno!")
         }
     }
-}
+
 
 
 extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout {
