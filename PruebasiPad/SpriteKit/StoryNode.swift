@@ -15,7 +15,7 @@ class StoryNode: Object {
     @objc dynamic var stringUUID: String?
     var childrenNodesUUID = List<String>()
     @objc dynamic weak var parentNode: StoryNode?
-    
+
     
     // MARK: - Helper functions
     func add(child: StoryNode){

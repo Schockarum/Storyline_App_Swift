@@ -32,7 +32,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        loadStories()
+        loadStories()
         self.collectionView.reloadData()
     }
     

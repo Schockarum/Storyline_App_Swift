@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import SpriteKit
 
 class ProjectCollectionViewCell: UICollectionViewCell{
 
     #warning("Nombres confusos, deberían llamarse 'StoryImageView' y 'StoryTitleLabel', arreglar al final, si queda tiempo.")
     @IBOutlet weak var projectImageView: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
-    
     
     var storyName: String? // Here we store the storyname
     //var nodeList: [SKSpriteNode] = [] //Here we store every node that this story has
@@ -37,10 +35,26 @@ class ProjectCollectionViewCell: UICollectionViewCell{
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer){
         if sender.state == .began {
-            let menu = UIMenuController.shared
+//            let menu = UIMenuController.shared
             becomeFirstResponder()
-            //Action after long press is detected
             
+            let alertController = UIAlertController(title: "Story Manager", message: "Please choose an option", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Edit story", style: .default, handler: { (action) in
+                print("huevos")
+                #warning("Aqui ponemos todo para editar la historia")
+                
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+)
+            
+            alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                print("Conejote")
+                #warning("Aqui ponemos todo para borrar la historia")
+            }))
+            
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         }
     }
 }
