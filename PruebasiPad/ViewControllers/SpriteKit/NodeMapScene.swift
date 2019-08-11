@@ -13,6 +13,7 @@ class NodeMapScene: SKScene {
     
     let mainNodeColor = "light green node"
     let childNodeColor = "yellow node"
+    let creationNodeColor = "purple node"
     
     private var label : SKLabelNode?
     private var node : SKSpriteNode?
@@ -23,7 +24,9 @@ class NodeMapScene: SKScene {
     
     // Tree Navigation Variables:
     var visitedNodes: [StoryNode] = []
-    var actualNode: StoryNode?
+    var actualChildren: [StoryNode] = []
+    var actualNode: SKSpriteNode?
+    var childDrawn = 0 //For keeping track of the child drawn
     
     
     // MARK: - Override Functions
@@ -44,17 +47,33 @@ class NodeMapScene: SKScene {
         storyLabel.horizontalAlignmentMode = .left
         addChild(storyLabel)
         
-        addEmitter()
-        //Ya tenemos el story, ahora obtenemos su info
+        //addEmitter() //Laaaag
+
         spawnAsRootNode(node: story!.root!)
+        displayCreationNode()
         
         }
     
     // MARK: - Utility Functions
+    func displayCreationNode(){
+        let creationNode = SKSpriteNode(imageNamed: creationNodeColor)
+        creationNode.position = CGPoint(x: size.width - 100, y: 100)
+        creationNode.size = CGSize(width: 100, height: 100)
+        
+        let nodeName = SKLabelNode(text: "+")
+        nodeName.fontName = "HelveticaNeue-Bold"
+        nodeName.fontSize = 60
+        nodeName.fontColor = .white
+        nodeName.position = CGPoint(x: 0, y: -15)
+        nodeName.zPosition = 100
+        nodeName.horizontalAlignmentMode = .center
+        creationNode.addChild(nodeName)
+        
+        addChild(creationNode)
+    }
     
     func spawnAsRootNode(node: StoryNode){
         visitedNodes.append(node) //We add the node to the visited list
-        actualNode = node //We change the focus of the actual node
         let rootNode = SKSpriteNode(imageNamed: mainNodeColor)
         rootNode.position = CGPoint(x: size.width/2, y: size.height/2)
         rootNode.size = CGSize(width: 200, height: 200)
@@ -67,13 +86,46 @@ class NodeMapScene: SKScene {
         nodeName.horizontalAlignmentMode = .center
         rootNode.addChild(nodeName)
         
+        actualNode = rootNode
         addChild(rootNode)
         
-        //Spawn everychildren around this node.
+        //Spawn every children this node has around it.
         spawnChildrenAround(node: node)
     }
     
+    //The story node that is marked down here is actually our last main focused node.
+    func drawChild(radius: Double, nodeCount: Int, nodeToDraw: StoryNode){
+        let degrees = 360/nodeCount
+        let childNode = SKSpriteNode(imageNamed: childNodeColor)
+        let x = radius * cos(Double(childDrawn * degrees))
+        let y = radius * sin(Double(childDrawn * degrees))
+        childNode.position = CGPoint(x: x, y: y)
+        childNode.size = CGSize(width: 150, height: 150)
+        
+        let nodeName = SKLabelNode(text: nodeToDraw.chapter?.chapterTitle ?? " ")
+        nodeName.fontName = "HelveticaNeue-Thin"
+        nodeName.fontSize = 20
+        nodeName.fontColor = .black
+        nodeName.zPosition = 100
+        nodeName.horizontalAlignmentMode = .center
+        childNode.addChild(nodeName)
+        
+        actualNode?.addChild(childNode)
+    }
+    
     func spawnChildrenAround(node: StoryNode){
+        do {
+            let numberOfChildren = node.childrenNodesUUID.count
+            let realm = try Realm()
+            for childId in node.childrenNodesUUID{
+                let childNode =  realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId)).first
+                actualChildren.append(childNode!)
+                drawChild(radius: 250, nodeCount: numberOfChildren, nodeToDraw: childNode!)
+                childDrawn += 1
+            }
+        } catch {
+            print("Unable to locate node's children.")
+        }
         
     }
     
@@ -83,5 +135,12 @@ class NodeMapScene: SKScene {
         emitter?.particlePositionRange = CGVector(dx: 2650, dy: 2000)
         emitter?.particleBirthRate = CGFloat(integerLiteral: 5)
         addChild(emitter!)
+    }
+    
+    // MARK: - Interaction Functions
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let position = touches.first?.location(in: self) else { return }
+        guard let tappedNode = nodes(at: position).first(where: { $0 is SKSpriteNode}) else { return }
     }
 }
