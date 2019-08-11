@@ -94,6 +94,8 @@ class MainPageCollectionViewController: UICollectionViewController {
             do {
                 let realm = try Realm()
                 let result = realm.objects(Story.self).filter(NSPredicate(format: "uuid CONTAINS %@", self.selectedStoryUUID))
+                let storyToDelete = realm.objects(Story.self).filter(NSPredicate(format: "uuid CONTAINS %@", self.selectedStoryUUID)).first
+                storyToDelete?.deleteRecords()
                 try realm.write {
                     realm.delete(result)
                 }

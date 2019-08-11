@@ -27,9 +27,13 @@ class Story: Object {
     
     func deleteRecords(){ //Manda a llamar la eliminación de la raíz quien debe llamar su método para borrar a sus hijos
         do {
+            let realm = try Realm()
             root!.deleteSons()
-            try realm?.write {
-                realm?.delete(root!) //Every story starts with a root node. No Problemo.
+            let myRootResult = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", root!.stringUUID!))
+            root?.deleteSons()
+            root?.deleteNodeChapter(node: root!)
+            try realm.write {
+                realm.delete(myRootResult) //Every story starts with a root node. No Problemo.
             }
         } catch {
             print("Unable to delete root node from story")

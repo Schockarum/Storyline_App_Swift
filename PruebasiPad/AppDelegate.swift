@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            realm.deleteAll()
 //
 //        }
-//        return true
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

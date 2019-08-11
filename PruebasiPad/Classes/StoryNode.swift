@@ -23,14 +23,30 @@ class StoryNode: Object {
         child.parentNode = self
     }
     
+    func deleteNodeChapter(node: StoryNode){
+        do {
+            let realm = try Realm()
+            let chapterUUID = node.chapter?.chapterUUID
+            let chapterResult = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!))
+            
+            try realm.write {
+                realm.delete(chapterResult)
+            }
+        } catch {
+            print("Unable to locate Node's chapter")
+        }
+    }
+    
     func deleteSons(){
         do {
             let realm = try Realm()
             for childId in childrenNodesUUID{
-                let childNode = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId)).first
+                let childNode =  realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId)).first
+                let childNodeResult = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId))
+                
                 childNode?.deleteSons()
                 try realm.write {
-                    realm.delete(childNode!)
+                    realm.delete(childNodeResult)
                 }
             }
         } catch {
