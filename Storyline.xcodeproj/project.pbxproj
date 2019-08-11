@@ -22,6 +22,8 @@
 		7DAA38F722E7587E00268FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F522E7587E00268FEC /* LaunchScreen.storyboard */; };
 		7DADBAB422F54B840018DCED /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADBAB322F54B840018DCED /* GameViewController.swift */; };
 		7DADBAE022F561110018DCED /* NodeMapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADBADF22F561110018DCED /* NodeMapScene.swift */; };
+		7DEC557623009F090046BAEA /* particles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7DEC557423009F090046BAEA /* particles.sks */; };
+		7DEC557723009F090046BAEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DEC557523009F090046BAEA /* Assets.xcassets */; };
 		E7427C3175230B3FEE5CE21E /* Pods_Storyline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593E7C92F10507EBC497E52D /* Pods_Storyline.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		7DAA38F822E7587E00268FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DADBAB322F54B840018DCED /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = SpriteKitPlaygrounds/SpriteKitPlaygrounds/../../GameViewController.swift; sourceTree = "<group>"; };
 		7DADBADF22F561110018DCED /* NodeMapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeMapScene.swift; sourceTree = "<group>"; };
+		7DEC557423009F090046BAEA /* particles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = particles.sks; sourceTree = "<group>"; };
+		7DEC557523009F090046BAEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7210A4724989B39BCE089A /* Pods-Storyline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storyline.release.xcconfig"; path = "Target Support Files/Pods-Storyline/Pods-Storyline.release.xcconfig"; sourceTree = "<group>"; };
 		DCB235893EFDF697E7A0143C /* Pods-Storyline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storyline.debug.xcconfig"; path = "Target Support Files/Pods-Storyline/Pods-Storyline.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,8 @@
 			children = (
 				7DADBADF22F561110018DCED /* NodeMapScene.swift */,
 				7DADBAB322F54B840018DCED /* GameViewController.swift */,
+				7DEC557423009F090046BAEA /* particles.sks */,
+				7DEC557523009F090046BAEA /* Assets.xcassets */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -221,6 +227,8 @@
 				7DAA38F722E7587E00268FEC /* LaunchScreen.storyboard in Resources */,
 				7DAA38F422E7587E00268FEC /* Assets.xcassets in Resources */,
 				7DAA38F222E7587D00268FEC /* Main.storyboard in Resources */,
+				7DEC557623009F090046BAEA /* particles.sks in Resources */,
+				7DEC557723009F090046BAEA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

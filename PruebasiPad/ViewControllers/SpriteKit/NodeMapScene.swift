@@ -43,7 +43,8 @@ class NodeMapScene: SKScene {
         storyLabel.zPosition = 1
         storyLabel.horizontalAlignmentMode = .left
         addChild(storyLabel)
-
+        
+        addEmitter()
         //Ya tenemos el story, ahora obtenemos su info
         spawnAsRootNode(node: story!.root!)
         
@@ -69,8 +70,18 @@ class NodeMapScene: SKScene {
         addChild(rootNode)
         
         //Spawn everychildren around this node.
+        spawnChildrenAround(node: node)
+    }
+    
+    func spawnChildrenAround(node: StoryNode){
         
     }
     
-    
+    func addEmitter(){
+        let emitter = SKEmitterNode(fileNamed: "particles")
+        emitter?.position = CGPoint(x: size.width/2, y: size.height/2)
+        emitter?.particlePositionRange = CGVector(dx: 2650, dy: 2000)
+        emitter?.particleBirthRate = CGFloat(integerLiteral: 5)
+        addChild(emitter!)
+    }
 }
