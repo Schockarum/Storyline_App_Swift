@@ -112,6 +112,7 @@
                         <outlet property="mainBackgroundImageView" destination="DnT-y8-wr3" id="Kf8-Xz-n1I"/>
                         <segue destination="pT7-jH-gr2" kind="show" identifier="loadStory" id="VME-gh-sQC"/>
                         <segue destination="7ta-Wr-KsN" kind="presentation" identifier="createStory" id="ove-KH-UOD"/>
+                        <segue destination="CCe-It-g13" kind="presentation" identifier="editStory" id="Oog-XM-abQ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGg-o3-08e" userLabel="First Responder" sceneMemberID="firstResponder"/>

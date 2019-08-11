@@ -81,6 +81,8 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     // MARK: - Utility Functions
     
+    
+    
     func deleteAlert(indexPath: Int){
         let alertController = UIAlertController(title: "Delete Story?", message: "Are you sure?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Keep story", style: .default, handler: nil))
@@ -167,15 +169,10 @@ class MainPageCollectionViewController: UICollectionViewController {
             let createView = segue.destination as? CreateStoryModalViewController
             createView?.mainPageCollectionViewReference = self //Code injection
         
-//        case editStorySegueId:
-//            let editView = segue.destination as? EditStoryModalViewController
-//            editView?.mainPageCollectionViewReference = self //code injection
-//            editView?.storyToEdit = stories[selectedStoryIndex]
-            
+        case editStorySegueId:
+            let editView = segue.destination as? EditStoryModalViewController
+            editView?.mainPageCollectionViewReference = self //code injection
         default:
-            if editionIsOn {
-                #warning("Si esto se cumple, debemos ir al segue de edicion y mandarle los datos de la historia")
-            }
             print("¡Oh, Neptuno!")
         }
     }
@@ -219,8 +216,7 @@ extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout 
             self.collectionView.reloadData()
             return
         case editionIsOn:
-            #warning("Logica para editar una historia")
-            switchEdition()
+            performSegue(withIdentifier: editStorySegueId, sender: self)
             return
         default:
             self.performSegue(withIdentifier: openStorySegueId, sender: self)

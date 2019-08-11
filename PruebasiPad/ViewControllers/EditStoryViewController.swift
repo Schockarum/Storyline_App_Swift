@@ -13,24 +13,28 @@ class EditStoryModalViewController: UIViewController, UIImagePickerControllerDel
 
     @IBOutlet weak var editStoryImageView: UIImageView!
     @IBOutlet weak var editStoryTextField: UITextField!
-    var storyToEdit: Story?
     
     var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
     let realm = try! Realm()
+    var storyToEdit: Story?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        storyToEdit = realm.objects(Story.self).filter(NSPredicate(format: "uuid CONTAINS %@", mainPageCollectionViewReference.selectedStoryUUID)).first
         setupView()
     }
+    
     
     // MARK: - Setup Functions
 
     func setupView(){
+        do {
+            self.editStoryTextField.text = storyToEdit?.storyName
+            self.editStoryImageView.image = storyToEdit?.buildImageFrom(data: storyToEdit!.image!)
+        }
         view.backgroundColor = .clear
         editStoryTextField.backgroundColor = .clear
-        editStoryTextField.text = storyToEdit?.storyName
         editStoryImageView.layer.cornerRadius = 10
-        editStoryImageView.image = storyToEdit?.buildImageFrom(data: storyToEdit!.image!)
     }
     
     // MARK: - Actions
