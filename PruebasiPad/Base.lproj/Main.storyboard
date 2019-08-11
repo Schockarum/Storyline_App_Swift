@@ -96,11 +96,13 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Library" id="hrG-Lt-sY3">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="trash" id="bdT-pR-ZWX">
+                            <color key="tintColor" red="0.5" green="0.23488328095769145" blue="0.11088804661831109" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="deleteStoryButtonPressed:" destination="fPO-wk-YSc" id="wab-aR-0fm"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit Story" image="pencil" id="CKd-t7-NKc">
+                            <color key="tintColor" red="0.5" green="0.23488328095769145" blue="0.11088804661831109" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="editStoryButtonPressed:" destination="fPO-wk-YSc" id="OgZ-fH-DP0"/>
                             </connections>

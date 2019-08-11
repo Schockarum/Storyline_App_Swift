@@ -17,7 +17,7 @@ class MainPageCollectionViewController: UICollectionViewController {
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var mainBackgroundImageView: UIImageView!
     private let reusableIdentifier = "ProjectCollectionViewCell"
-    let backgroundImageName = "white background"
+    let backgroundImageName = "background 2"
     let createSegueIdentifier = "createStory"
     let openStorySegueId = "loadStory"
     let editStorySegueId = "editStory"
@@ -53,6 +53,10 @@ class MainPageCollectionViewController: UICollectionViewController {
         mainBackgroundImageView.alpha = 0.8
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Library"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "background 1"), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         editionIsOn = false
         deletionIsOn = false
         deleteButton.image = UIImage(named: "trash")

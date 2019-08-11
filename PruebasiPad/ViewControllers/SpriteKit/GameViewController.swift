@@ -8,7 +8,6 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
     
@@ -18,34 +17,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "NodeMapScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
-    }
-    
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        let scene = NodeMapScene(size: CGSize(width: 2732, height: 2048))
+        let skview = self.view as! SKView
+        skview.showsFPS = true
+        skview.showsNodeCount = true
+        skview.ignoresSiblingOrder = true
+        scene.scaleMode = .aspectFit
+        skview.presentScene(scene)
     }
     
     override var prefersStatusBarHidden: Bool {
