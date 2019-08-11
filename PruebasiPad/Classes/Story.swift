@@ -24,6 +24,19 @@ class Story: Object {
     func buildImageFrom(data: Data) -> UIImage {
         return (UIImage(data: data)!)
     }
+    
+    func deleteRecords(){ //Manda a llamar la eliminación de la raíz quien debe llamar su método para borrar a sus hijos
+        do {
+            root!.deleteSons()
+            try realm?.write {
+                realm?.delete(root!) //Every story starts with a root node. No Problemo.
+            }
+        } catch {
+            print("Unable to delete root node from story")
+        }
+        
+        
+    }
 }
 
 /*Story is the class responsible of storing the starting data of a story, such as the title, the associed image to it and the root node of it.

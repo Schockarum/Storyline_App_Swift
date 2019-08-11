@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #warning("function to restart realm database (migrations are for weaklings)")
+//        #warning("function to restart realm database (migrations are for weaklings)")
 //        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
 //        let realmURLs = [
 //            realmURL,
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            realm.deleteAll()
 //
 //        }
-        return true
+//        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

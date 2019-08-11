@@ -38,7 +38,6 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
         myStory.storyName = createStoryTextField.text ?? "New Story"
         myStory.root = StoryNode()
         myStory.root?.chapter = Chapter()
-        myStory.root?.parentNode = myStory.root
         mainPageCollectionViewReference.stories.append(myStory)
         do {
             try realm.write {

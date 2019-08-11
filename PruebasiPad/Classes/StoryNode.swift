@@ -12,7 +12,7 @@ import RealmSwift
 class StoryNode: Object {
 
     @objc dynamic var chapter: Chapter?
-    @objc dynamic var stringUUID: String?
+    @objc dynamic var stringUUID: String? = UUID().uuidString
     var childrenNodesUUID = List<String>()
     @objc dynamic weak var parentNode: StoryNode?
 
@@ -21,6 +21,21 @@ class StoryNode: Object {
     func add(child: StoryNode){
         self.childrenNodesUUID.append(child.stringUUID!)
         child.parentNode = self
+    }
+    
+    func deleteSons(){
+        do {
+            let realm = try Realm()
+            for childId in childrenNodesUUID{
+                let childNode = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId)).first
+                childNode?.deleteSons()
+                try realm.write {
+                    realm.delete(childNode!)
+                }
+            }
+        } catch {
+            print("Unable to locate and delete sons")
+        }
     }
 }
 

@@ -10,10 +10,10 @@ import UIKit
 import RealmSwift
 
 class Chapter: Object {
-
-
-    var chapterTitle: String?
-    var contentsOfChapter: String?
+    
+    @objc dynamic var chapterTitle: String?
+    @objc dynamic var contentsOfChapter: String?
+    @objc dynamic var chapterUUID: String? = UUID().uuidString
 
 }
 
