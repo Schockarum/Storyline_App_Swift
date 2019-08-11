@@ -167,7 +167,7 @@ class MainPageCollectionViewController: UICollectionViewController {
         switch segue.identifier {
         case openStorySegueId:
             let gameView = segue.destination as? GameViewController
-            gameView?.mainPageCollectionViewReference = self //Code injection
+            gameView?.selectedStoryId = selectedStoryUUID
             
         case createSegueIdentifier:
             let createView = segue.destination as? CreateStoryModalViewController
@@ -206,7 +206,6 @@ extension MainPageCollectionViewController:  UICollectionViewDelegateFlowLayout 
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableIdentifier, for: indexPath) as! ProjectCollectionViewCell
-        cell.cellStory = stories[indexPath.row]
         cell.storyTitleLabel.text = stories[indexPath.row].storyName
         cell.storyImageView.image = UIImage(data: stories[indexPath.row].image!)
         return cell

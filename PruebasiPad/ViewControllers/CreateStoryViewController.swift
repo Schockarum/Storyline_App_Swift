@@ -66,12 +66,14 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     }
     
     // MARK: - Overrides
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
-    // MARK: - UINavigationControllerDelegate Functions
+    // MARK: - Delegate Functions
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         createStoryImageView.image = image
@@ -80,5 +82,3 @@ class CreateStoryModalViewController: UIViewController, UIImagePickerControllerD
     
 }
 
-/*This view controller has to get the user info for a new story, this is an image and a name.
- However, the user can leave the fields blank, in that case, we'll use a default configuration using placeholders.*/

@@ -12,8 +12,6 @@ class ProjectCollectionViewCell: UICollectionViewCell{
     
     @IBOutlet weak var storyImageView: UIImageView!
     @IBOutlet weak var storyTitleLabel: UILabel!
-    @IBOutlet weak var editStoryButton: UIButton!
-    var cellStory: Story?
     
     override func awakeFromNib() {
         super .awakeFromNib()
@@ -24,4 +22,4 @@ class ProjectCollectionViewCell: UICollectionViewCell{
     }
 }
 
-/*Our custom Colection View Cell, it has an image view and a label so we can present the Story name and image (if there's any) on our app's main page */
+/*Our custom Colection View Cell, it has an image view and a label so we can present the Story name and image (if there's any) on our app's main page. We also give it a Story so it can go around passing it whenever it goes from one view controller to the other. */

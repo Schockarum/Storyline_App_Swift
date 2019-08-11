@@ -58,14 +58,6 @@
                                             <color key="shadowColor" red="0.15794696829999999" green="0.21572730309999999" blue="0.2610913212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <size key="shadowOffset" width="-2" height="2"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKH-qk-Zok">
-                                            <rect key="frame" x="512" y="386" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="SHF-U3-ujf"/>
-                                                <constraint firstAttribute="width" constant="50" id="cem-OR-QMW"/>
-                                            </constraints>
-                                            <state key="normal" image="pencil"/>
-                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -73,17 +65,14 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="E2m-7Q-NOb" secondAttribute="trailing" id="7jH-1P-y35"/>
                                     <constraint firstItem="XwQ-BA-cYT" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" constant="20" id="9s2-tL-gjI"/>
                                     <constraint firstItem="E2m-7Q-NOb" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="topMargin" id="EWQ-Sz-VlF"/>
-                                    <constraint firstAttribute="trailing" secondItem="EKH-qk-Zok" secondAttribute="trailing" constant="20" id="JBu-3i-30L"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="XwQ-BA-cYT" secondAttribute="trailing" constant="20" id="Ms0-3s-Ob4"/>
                                     <constraint firstAttribute="trailing" secondItem="lNf-So-EKF" secondAttribute="trailing" constant="30" id="XPU-cW-MCK"/>
                                     <constraint firstItem="E2m-7Q-NOb" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leadingMargin" id="ZxW-WT-mlS"/>
                                     <constraint firstAttribute="bottom" secondItem="lNf-So-EKF" secondAttribute="bottom" constant="10" id="bM6-GD-0NB"/>
-                                    <constraint firstAttribute="bottom" secondItem="EKH-qk-Zok" secondAttribute="bottom" constant="20" id="gK5-FX-LG5"/>
                                     <constraint firstItem="lNf-So-EKF" firstAttribute="leading" secondItem="ARz-7n-ZlW" secondAttribute="leading" constant="30" id="m2r-qX-Yt8"/>
                                     <constraint firstItem="lNf-So-EKF" firstAttribute="top" secondItem="ARz-7n-ZlW" secondAttribute="top" constant="40" id="p4U-eX-0N6"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="editStoryButton" destination="EKH-qk-Zok" id="g0z-bg-jd8"/>
                                     <outlet property="storyImageView" destination="lNf-So-EKF" id="30a-Bp-7qG"/>
                                     <outlet property="storyTitleLabel" destination="XwQ-BA-cYT" id="lrC-3J-og7"/>
                                 </connections>

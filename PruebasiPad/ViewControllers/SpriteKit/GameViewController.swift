@@ -6,23 +6,24 @@
 //  Copyright © 2019 Schock. All rights reserved.
 //
 
-import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
     
-    var mainPageCollectionViewReference: MainPageCollectionViewController! //For code injection
-    var storyFromMainReference: Story?
+    var selectedStoryId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let scene = NodeMapScene(size: CGSize(width: 2732, height: 2048))
+        scene.scaleMode = .resizeFill
+        scene.storyId = selectedStoryId
+        
         let skview = self.view as! SKView
         skview.showsFPS = true
         skview.showsNodeCount = true
         skview.ignoresSiblingOrder = true
-        scene.scaleMode = .aspectFit
+        skview.preferredFramesPerSecond = 60
         skview.presentScene(scene)
     }
     
