@@ -14,19 +14,24 @@ class NodeMapScene: SKScene {
     let mainNodeColor = "light green node"
     let childNodeColor = "yellow node"
     let creationNodeColor = "purple node"
+    let returnArrow = "arrow"
     
     private var label : SKLabelNode?
     private var node : SKSpriteNode?
     var storyId: String? //The story uuid we selected on the collection view is injected here.
+    var everyStoryNode: [String] = [] //Every story node that this story has
     
     var storyLabel = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
     let realm = try! Realm()
     
     // Tree Navigation Variables:
-    var visitedNodes: [StoryNode] = []
-    var actualChildren: [StoryNode] = []
+    var visitedNodes: [String] = []
+    var actualChildren: [String] = []
     var actualNode: SKSpriteNode?
-    var childDrawn = 0 //For keeping track of the child drawn
+    
+    // Ease of manageability variables
+    var nodesOnDisplay: [SKNode] = []
+    var childDrawn = 0
     
     
     // MARK: - Override Functions
@@ -51,10 +56,20 @@ class NodeMapScene: SKScene {
 
         spawnAsRootNode(node: story!.root!)
         displayCreationNode()
+        displayReturnArrow()
         
         }
     
     // MARK: - Utility Functions
+    func displayReturnArrow(){
+        let returnArrowNode = SKSpriteNode(imageNamed: returnArrow)
+        returnArrowNode.position = CGPoint(x: 40, y: 80)
+        returnArrowNode.size = CGSize(width: 50, height: 50)
+        returnArrowNode.zRotation = CGFloat(Double.pi / 2)
+        returnArrowNode.name = "returnNode"
+        addChild(returnArrowNode)
+    }
+    
     func displayCreationNode(){
         let creationNode = SKSpriteNode(imageNamed: creationNodeColor)
         creationNode.position = CGPoint(x: size.width - 100, y: 100)
@@ -67,16 +82,18 @@ class NodeMapScene: SKScene {
         nodeName.position = CGPoint(x: 0, y: -15)
         nodeName.zPosition = 100
         nodeName.horizontalAlignmentMode = .center
+        creationNode.name = "creationNode"
         creationNode.addChild(nodeName)
         
         addChild(creationNode)
     }
     
     func spawnAsRootNode(node: StoryNode){
-        visitedNodes.append(node) //We add the node to the visited list
+        visitedNodes.append(node.stringUUID!) //We add the node to the visited list
         let rootNode = SKSpriteNode(imageNamed: mainNodeColor)
         rootNode.position = CGPoint(x: size.width/2, y: size.height/2)
         rootNode.size = CGSize(width: 200, height: 200)
+        rootNode.name = node.stringUUID //Root node has it's uuid
         
         let nodeName = SKLabelNode(text: node.chapter?.chapterTitle ?? " ")
         nodeName.fontName = "HelveticaNeue-Thin"
@@ -87,6 +104,9 @@ class NodeMapScene: SKScene {
         rootNode.addChild(nodeName)
         
         actualNode = rootNode
+
+        nodesOnDisplay.append(actualNode!)
+        nodesOnDisplay.append(nodeName)
         addChild(rootNode)
         
         //Spawn every children this node has around it.
@@ -101,6 +121,7 @@ class NodeMapScene: SKScene {
         let y = radius * sin(Double(childDrawn * degrees))
         childNode.position = CGPoint(x: x, y: y)
         childNode.size = CGSize(width: 150, height: 150)
+        childNode.name = nodeToDraw.stringUUID //Cada nodo hijo dibujado tiene su UUID como nombre
         
         let nodeName = SKLabelNode(text: nodeToDraw.chapter?.chapterTitle ?? " ")
         nodeName.fontName = "HelveticaNeue-Thin"
@@ -110,6 +131,8 @@ class NodeMapScene: SKScene {
         nodeName.horizontalAlignmentMode = .center
         childNode.addChild(nodeName)
         
+        nodesOnDisplay.append(childNode)
+        nodesOnDisplay.append(nodeName)
         actualNode?.addChild(childNode)
     }
     
@@ -119,7 +142,7 @@ class NodeMapScene: SKScene {
             let realm = try Realm()
             for childId in node.childrenNodesUUID{
                 let childNode =  realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", childId)).first
-                actualChildren.append(childNode!)
+                actualChildren.append(childNode!.stringUUID!)
                 drawChild(radius: 250, nodeCount: numberOfChildren, nodeToDraw: childNode!)
                 childDrawn += 1
             }
@@ -127,6 +150,12 @@ class NodeMapScene: SKScene {
             print("Unable to locate node's children.")
         }
         
+    }
+    
+    func clearScreen(){
+        for node in nodesOnDisplay {
+            node.removeFromParent()
+        }
     }
     
     func addEmitter(){
@@ -142,5 +171,17 @@ class NodeMapScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let position = touches.first?.location(in: self) else { return }
         guard let tappedNode = nodes(at: position).first(where: { $0 is SKSpriteNode}) else { return }
+        
+        if actualChildren.contains(tappedNode.name ?? "ño"){
+            print("Es un nodo hijo, podemos abrirlo")
+            guard let newRootName = tappedNode.name else { return }
+            let newRoot = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", newRootName)).first //Query to get story based on the id
+            clearScreen()
+            actualChildren = []
+            spawnAsRootNode(node: newRoot!)
+
+        } else {
+            print("sakese a la berja, men >:v")
+        }
     }
 }
