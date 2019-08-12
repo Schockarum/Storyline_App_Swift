@@ -85,8 +85,6 @@ class MainPageCollectionViewController: UICollectionViewController {
     
     // MARK: - Utility Functions
     
-    
-    
     func deleteAlert(indexPath: Int){
         let alertController = UIAlertController(title: "Delete Story?", message: "Are you sure?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Keep story", style: .default, handler: nil))

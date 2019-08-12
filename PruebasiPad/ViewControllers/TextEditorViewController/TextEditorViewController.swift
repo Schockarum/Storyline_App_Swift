@@ -57,22 +57,22 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Helper functions
     
-    //Autosave changes after 100 changes.
-    func textViewDidChange(_ textView: UITextView) { //Does something everytime the text changes
-        changesBeforeAutosave += 1
-        if changesBeforeAutosave == 100 {
-            do {
-                let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
-                try realm.write {
-                    chapter!.chapterTitle = chapterNameLabel.text
-                    chapter!.contentsOfChapter = textView.text
-                }
-            } catch {
-                print("Unable to save changes")
-            }
-            changesBeforeAutosave = 0
-        }
-    }
+//    //Autosave changes after 100 changes.
+//    func textViewDidChange(_ textView: UITextView) { //Does something everytime the text changes
+//        changesBeforeAutosave += 1
+//        if changesBeforeAutosave == 100 {
+//            do {
+//                let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
+//                try realm.write {
+//                    chapter!.chapterTitle = chapterNameLabel.text
+//                    chapter!.contentsOfChapter = textView.text
+//                }
+//            } catch {
+//                print("Unable to save changes")
+//            }
+//            changesBeforeAutosave = 0
+//        }
+//    }
     
     func saveChanges(){
         if editionBool! {
