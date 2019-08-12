@@ -17,6 +17,7 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     
     let realm = try! Realm()
     var chapterUUID: String?
+    var changesBeforeAutosave: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,36 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Helper functions
     
+    //Autosave changes after 100 changes.
     func textViewDidChange(_ textView: UITextView) { //Does something everytime the text changes
-        
+        changesBeforeAutosave += 1
+        if changesBeforeAutosave == 100 {
+            do {
+                let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
+                try realm.write {
+                    chapter!.chapterTitle = chapterNameLabel.text
+                    chapter!.contentsOfChapter = textView.text
+                }
+            } catch {
+                print("Unable to save changes")
+            }
+            changesBeforeAutosave = 0
+        }
     }
+    
+    func saveChanges(){
+        do {
+            let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
+            try realm.write {
+                chapter!.chapterTitle = chapterNameLabel.text
+                chapter!.contentsOfChapter = textView.text
+            }
+        } catch {
+            print("Unable to save changes")
+        }
+    }
+    
+    // MARK: - Obj-C Stuff
     
     //Get keyboard frame not to interfere with text in textView
     @objc func updateTextView(notification: Notification) {
@@ -78,6 +106,7 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     // MARK: - Actions
     
     @IBAction func dismissDocumentViewController() {
+        saveChanges()
         dismiss(animated: true)
     }
 }
