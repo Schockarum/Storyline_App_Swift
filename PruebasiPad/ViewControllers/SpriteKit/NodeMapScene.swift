@@ -20,7 +20,6 @@ class NodeMapScene: SKScene {
     private var label : SKLabelNode?
     private var node : SKSpriteNode?
     var storyId: String? //The story uuid we selected on the collection view is injected here.
-    var everyStoryNode: [String] = [] //Every story node that this story has
     
     var storyLabel = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
     let realm = try! Realm()
@@ -34,6 +33,8 @@ class NodeMapScene: SKScene {
     var nodesOnDisplay: [SKNode] = []
     var childDrawn = 0
     
+    // Reference types
+    var gameVCReference: GameViewController?
     
     // MARK: - Override Functions
     
@@ -62,6 +63,7 @@ class NodeMapScene: SKScene {
         }
     
     // MARK: - Utility Functions
+    
     func displayReturnArrow(){
         let returnArrowNode = SKSpriteNode(imageNamed: returnArrow)
         returnArrowNode.position = CGPoint(x: 40, y: 80)
@@ -81,7 +83,7 @@ class NodeMapScene: SKScene {
         nodeName.fontSize = 60
         nodeName.fontColor = .white
         nodeName.position = CGPoint(x: 0, y: -15)
-        nodeName.zPosition = 100
+        nodeName.zPosition = 10
         nodeName.horizontalAlignmentMode = .center
         creationNode.name = "creationNode"
         creationNode.addChild(nodeName)
@@ -102,12 +104,13 @@ class NodeMapScene: SKScene {
         nodeName.fontName = "HelveticaNeue-Thin"
         nodeName.fontSize = 25
         nodeName.fontColor = .black
-        nodeName.zPosition = 100
+        nodeName.zPosition = 10
         nodeName.horizontalAlignmentMode = .center
         rootNode.addChild(nodeName)
         
         let editNode = SKSpriteNode(imageNamed: editImage)
         editNode.position = CGPoint(x: 65, y: -65)
+        editNode.zPosition = 20
         editNode.size = CGSize(width: 50, height: 50)
         editNode.name = "editionNode"
         rootNode.addChild(editNode)
@@ -136,7 +139,7 @@ class NodeMapScene: SKScene {
         nodeName.fontName = "HelveticaNeue-Thin"
         nodeName.fontSize = 20
         nodeName.fontColor = .black
-        nodeName.zPosition = 100
+        nodeName.zPosition = 10
         nodeName.horizontalAlignmentMode = .center
         childNode.addChild(nodeName)
         
@@ -206,6 +209,10 @@ class NodeMapScene: SKScene {
             
         case "editionNode":
             print("El següe, güe!!")
+            let actualNodeID = visitedNodes.last
+            let actualStoryNode = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", actualNodeID!)).first //Query to get story based on the id
+            let actualChapter = actualStoryNode?.chapter!
+            gameVCReference?.injectedChapter = actualChapter?.chapterUUID
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doaSegue"), object: nil)
         default:
             print("\n")

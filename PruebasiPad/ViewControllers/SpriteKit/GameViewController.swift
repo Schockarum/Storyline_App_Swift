@@ -11,6 +11,7 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     var selectedStoryId: String?
+    var injectedChapter: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,7 @@ class GameViewController: UIViewController {
         let scene = NodeMapScene(size: CGSize(width: 2732, height: 2048))
         scene.scaleMode = .resizeFill
         scene.storyId = selectedStoryId
+        scene.gameVCReference = self //Code injection
         
         let skview = self.view as! SKView
         skview.showsFPS = true
@@ -41,6 +43,17 @@ class GameViewController: UIViewController {
         if let vc = storyboard.instantiateInitialViewController() {
             print("Go to main menu")
             self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "toChapterEdition":
+            let editionView = segue.destination as? TextEditorViewController
+            editionView?.chapterUUID = injectedChapter!
+        default:
+            print("Unable to segue to Text Editor View Controller")
         }
     }
     

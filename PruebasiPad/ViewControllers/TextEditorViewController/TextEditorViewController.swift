@@ -7,47 +7,43 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TextEditorViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var chapterNameLabel: UITextField!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
     
-    var document: Document?
+    let realm = try! Realm()
+    var chapterUUID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextView()
-        // Do any additional setup after loading the view.
+        textView.delegate = self //TextView delegate
+        setupAdaptativeScroll()
     }
     
     // MARK: - Setup Functions
     
-    func setupTextView(){
-        textView.delegate = self //TextView delegate
-        textView.backgroundColor = .clear
-        textView.textColor = .black
-        let font = UIFont(name: "Avenir Next", size: 25)
-        textView.font = font
+    func setupAdaptativeScroll(){
         //Setup scroll and adaptative keyboard scroll
         NotificationCenter.default.addObserver(self, selector: #selector(TextEditorViewController.updateTextView(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TextEditorViewController.updateTextView(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
     }
     
     // MARK: - Override functions
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Access the document
-        document?.open(completionHandler: { (success) in
-            if success {
-                // Display the content of the document, e.g.:
-                self.textView.attributedText = self.document?.text
-            } else {
-                // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
-            }
-        })
+        let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
+        
+        chapterNameLabel.text = chapter?.chapterTitle
+        textView.text = chapter?.contentsOfChapter
+        textView.backgroundColor = .clear
+        textView.textColor = .black
+        let font = UIFont(name: "Avenir Next", size: 25)
+        textView.font = font
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { //Hide Keyboard
@@ -58,8 +54,7 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     // MARK: - Helper functions
     
     func textViewDidChange(_ textView: UITextView) { //Does something everytime the text changes
-        document?.text = textView.attributedText
-        document?.updateChangeCount(.done)
+        
     }
     
     //Get keyboard frame not to interfere with text in textView
@@ -83,9 +78,6 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     // MARK: - Actions
     
     @IBAction func dismissDocumentViewController() {
-        dismiss(animated: true) {
-            //self.textViewDidChange(self.textView)
-            self.document?.close(completionHandler: nil)
-        }
+        dismiss(animated: true)
     }
 }

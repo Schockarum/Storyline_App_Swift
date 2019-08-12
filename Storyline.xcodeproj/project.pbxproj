@@ -15,7 +15,6 @@
 		7D4FDD2D22F799D500BA39A1 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */; };
 		7D4FDD3222F7A38B00BA39A1 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3122F7A38B00BA39A1 /* Story.swift */; };
 		7D4FDD3422F7B4A900BA39A1 /* EditStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3322F7B4A900BA39A1 /* EditStoryViewController.swift */; };
-		7D4FDD3622F7D71500BA39A1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FDD3522F7D71500BA39A1 /* Document.swift */; };
 		7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA38EC22E7587D00268FEC /* AppDelegate.swift */; };
 		7DAA38F222E7587D00268FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F022E7587D00268FEC /* Main.storyboard */; };
 		7DAA38F422E7587E00268FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA38F322E7587E00268FEC /* Assets.xcassets */; };
@@ -37,7 +36,6 @@
 		7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		7D4FDD3122F7A38B00BA39A1 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7D4FDD3322F7B4A900BA39A1 /* EditStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryViewController.swift; sourceTree = "<group>"; };
-		7D4FDD3522F7D71500BA39A1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7DAA38E922E7587D00268FEC /* Storyline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storyline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAA38EC22E7587D00268FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DAA38F122E7587D00268FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				7D4FDD2B22F799D500BA39A1 /* TextEditorViewController.swift */,
-				7D4FDD3522F7D71500BA39A1 /* Document.swift */,
 			);
 			path = TextEditorViewController;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 				7DADBAE022F561110018DCED /* NodeMapScene.swift in Sources */,
 				7D4FDD3222F7A38B00BA39A1 /* Story.swift in Sources */,
 				7D0E2B2922EE8F3900BA9811 /* MainPageCollectionViewController.swift in Sources */,
-				7D4FDD3622F7D71500BA39A1 /* Document.swift in Sources */,
 				7D4FDD3422F7B4A900BA39A1 /* EditStoryViewController.swift in Sources */,
 				7D0E2B2322EE6F4300BA9811 /* ProjectCollectionViewCell.swift in Sources */,
 				7DAA38ED22E7587D00268FEC /* AppDelegate.swift in Sources */,
