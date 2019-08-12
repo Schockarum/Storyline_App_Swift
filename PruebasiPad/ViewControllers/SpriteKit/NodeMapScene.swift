@@ -206,8 +206,10 @@ class NodeMapScene: SKScene {
             
         case "editionNode":
             print("El següe, güe!!")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doaSegue"), object: nil)
         default:
             print("\n")
         }
     }
+    
 }

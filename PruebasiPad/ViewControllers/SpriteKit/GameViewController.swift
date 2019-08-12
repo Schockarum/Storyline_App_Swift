@@ -25,6 +25,9 @@ class GameViewController: UIViewController {
         skview.ignoresSiblingOrder = true
         skview.preferredFramesPerSecond = 60
         skview.presentScene(scene)
+        
+        //Observer to open this view controller
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.doaSegue), name: NSNotification.Name(rawValue: "doaSegue"), object: nil)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -39,5 +42,13 @@ class GameViewController: UIViewController {
             print("Go to main menu")
             self.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: - Obj-C Function
+    
+    @objc func doaSegue(){
+        performSegue(withIdentifier: "toChapterEdition", sender: self)
+        self.view.removeFromSuperview()
+        self.view = nil
     }
 }

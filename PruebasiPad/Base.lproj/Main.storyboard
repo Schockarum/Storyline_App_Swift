@@ -280,6 +280,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="pxE-Ui-SgV"/>
                     </view>
+                    <connections>
+                        <segue destination="IzW-ZY-h98" kind="presentation" identifier="toChapterEdition" id="QRb-0F-GSE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gK-Kc-qr6" sceneMemberID="firstResponder"/>
             </objects>
