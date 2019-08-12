@@ -15,6 +15,7 @@ class NodeMapScene: SKScene {
     let childNodeColor = "yellow node"
     let creationNodeColor = "purple node"
     let returnArrow = "arrow"
+    let editImage = "pencil"
     
     private var label : SKLabelNode?
     private var node : SKSpriteNode?
@@ -104,6 +105,12 @@ class NodeMapScene: SKScene {
         nodeName.zPosition = 100
         nodeName.horizontalAlignmentMode = .center
         rootNode.addChild(nodeName)
+        
+        let editNode = SKSpriteNode(imageNamed: editImage)
+        editNode.position = CGPoint(x: 65, y: -65)
+        editNode.size = CGSize(width: 50, height: 50)
+        editNode.name = "editionNode"
+        rootNode.addChild(editNode)
         
         actualNode = rootNode
 
@@ -196,6 +203,9 @@ class NodeMapScene: SKScene {
             }
         case "creationNode":
             print("Cámara, perro, también podemos crear cosas")
+            
+        case "editionNode":
+            print("El següe, güe!!")
         default:
             print("\n")
         }

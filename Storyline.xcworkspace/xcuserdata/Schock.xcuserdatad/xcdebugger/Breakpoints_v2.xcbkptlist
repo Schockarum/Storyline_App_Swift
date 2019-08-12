@@ -70,11 +70,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.440985"
+            timestampString = "587261750.43444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "didMove(to:)"
             landmarkType = "7">
             <Actions>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.441534"
+            timestampString = "587261750.434966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "didMove(to:)"
             landmarkType = "7">
             <Actions>
@@ -270,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.4420201"
+            timestampString = "587261750.435428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "spawnAsRootNode(node:)"
             landmarkType = "7">
             <Actions>
@@ -295,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.442372"
+            timestampString = "587261750.4357899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "spawnChildrenAround(node:)"
             landmarkType = "7">
             <Actions>
@@ -320,11 +320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.44271"
+            timestampString = "587261750.436138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "drawChild(radius:nodeCount:nodeToDraw:)"
             landmarkType = "7">
             <Actions>
@@ -345,11 +345,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.443045"
+            timestampString = "587261750.4364901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "spawnAsRootNode(node:)"
             landmarkType = "7">
             <Actions>
@@ -370,11 +370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.443357"
+            timestampString = "587261750.4368531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "spawnChildrenAround(node:)"
             landmarkType = "7">
             <Actions>
@@ -395,11 +395,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.443664"
+            timestampString = "587261750.437183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "displayCreationNode()"
             landmarkType = "7">
             <Actions>
@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.4439909"
+            timestampString = "587261750.437511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
             <Actions>
@@ -445,11 +445,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.444314"
+            timestampString = "587261750.437833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
             <Actions>
@@ -470,11 +470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.44463"
+            timestampString = "587261750.438316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
             <Actions>
@@ -495,11 +495,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "PruebasiPad/ViewControllers/SpriteKit/NodeMapScene.swift"
-            timestampString = "587261393.4449379"
+            timestampString = "587261750.438783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
             <Actions>
