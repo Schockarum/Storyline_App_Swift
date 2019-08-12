@@ -205,15 +205,16 @@ class NodeMapScene: SKScene {
                 navigate(to: visitedNodes.last!)
             }
         case "creationNode":
-            print("Cámara, perro, también podemos crear cosas")
+            gameVCReference?.injectedParentNode = visitedNodes.last
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "segueToCreation"), object: nil)
             
         case "editionNode":
-            print("El següe, güe!!")
             let actualNodeID = visitedNodes.last
             let actualStoryNode = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", actualNodeID!)).first //Query to get story based on the id
             let actualChapter = actualStoryNode?.chapter!
             gameVCReference?.injectedChapter = actualChapter?.chapterUUID
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doaSegue"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "segueToEdition"), object: nil)
+            
         default:
             print("\n")
         }

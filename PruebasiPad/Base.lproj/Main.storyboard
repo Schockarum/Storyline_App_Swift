@@ -289,6 +289,7 @@
                     </view>
                     <connections>
                         <segue destination="IzW-ZY-h98" kind="presentation" identifier="toChapterEdition" id="QRb-0F-GSE"/>
+                        <segue destination="IzW-ZY-h98" kind="presentation" identifier="toChapterCreation" id="GHU-T3-y3c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gK-Kc-qr6" sceneMemberID="firstResponder"/>
@@ -426,4 +427,7 @@
         <image name="trash" width="30" height="30"/>
         <image name="yellow node" width="612" height="623"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GHU-T3-y3c"/>
+    </inferredMetricsTieBreakers>
 </document>

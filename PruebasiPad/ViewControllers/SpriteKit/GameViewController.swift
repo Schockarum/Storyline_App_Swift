@@ -11,7 +11,10 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     var selectedStoryId: String?
+
+    // Both injected data are UUID's so I can delegate my work to the realm database
     var injectedChapter: String?
+    var injectedParentNode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,8 @@ class GameViewController: UIViewController {
         skview.presentScene(scene)
         
         //Observer to open this view controller
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.doaSegue), name: NSNotification.Name(rawValue: "doaSegue"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.segueToEdition), name: NSNotification.Name(rawValue: "segueToEdition"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.segueToCreation), name: NSNotification.Name(rawValue: "segueToCreation"), object: nil)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -49,9 +53,16 @@ class GameViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+        case "toChapterCreation":
+            let editionView = segue.destination as? TextEditorViewController
+            editionView?.parentNodeUUID = injectedParentNode!
+            editionView?.editionBool = false
+            
         case "toChapterEdition":
             let editionView = segue.destination as? TextEditorViewController
             editionView?.chapterUUID = injectedChapter!
+            editionView?.editionBool = true
+            
         default:
             print("Unable to segue to Text Editor View Controller")
         }
@@ -59,7 +70,13 @@ class GameViewController: UIViewController {
     
     // MARK: - Obj-C Function
     
-    @objc func doaSegue(){
+    @objc func segueToCreation(){
+        performSegue(withIdentifier: "toChapterCreation", sender: self)
+        self.view.removeFromSuperview()
+        self.view = nil
+    }
+    
+    @objc func segueToEdition(){
         performSegue(withIdentifier: "toChapterEdition", sender: self)
         self.view.removeFromSuperview()
         self.view = nil

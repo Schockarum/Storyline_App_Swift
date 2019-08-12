@@ -16,8 +16,10 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     let realm = try! Realm()
-    var chapterUUID: String?
     var changesBeforeAutosave: Int = 0
+    var parentNodeUUID: String?
+    var chapterUUID: String?
+    var editionBool: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +39,11 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if editionBool! {
         let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
-        
         chapterNameLabel.text = chapter?.chapterTitle
         textView.text = chapter?.contentsOfChapter
+        }
         textView.backgroundColor = .clear
         textView.textColor = .black
         let font = UIFont(name: "Avenir Next", size: 25)
@@ -72,14 +75,32 @@ class TextEditorViewController: UIViewController, UITextViewDelegate {
     }
     
     func saveChanges(){
-        do {
-            let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
-            try realm.write {
-                chapter!.chapterTitle = chapterNameLabel.text
-                chapter!.contentsOfChapter = textView.text
+        if editionBool! {
+            do {
+                let chapter = realm.objects(Chapter.self).filter(NSPredicate(format: "chapterUUID CONTAINS %@", chapterUUID!)).first
+                try realm.write {
+                    chapter!.chapterTitle = chapterNameLabel.text ?? " "
+                    chapter!.contentsOfChapter = textView.text ?? " "
+                }
+            } catch {
+                print("Unable to save changes")
             }
-        } catch {
-            print("Unable to save changes")
+        } else {
+            do {
+                let parent = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", parentNodeUUID!)).first //Reference to parent node we created for
+                //We create everything
+                let newNode = StoryNode()
+                let newChapter = Chapter()
+                try realm.write {
+                    newChapter.chapterTitle = chapterNameLabel.text ?? " "
+                    newChapter.contentsOfChapter = textView.text ?? " "
+                    newNode.chapter = newChapter
+                    parent?.childrenNodesUUID.append(newNode.stringUUID!)
+                    realm.add(newNode)
+                }
+            } catch {
+                print("Unable to write new chapter")
+            }
         }
     }
     
