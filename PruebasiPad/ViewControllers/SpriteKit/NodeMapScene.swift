@@ -89,7 +89,9 @@ class NodeMapScene: SKScene {
     }
     
     func spawnAsRootNode(node: StoryNode){
-        visitedNodes.append(node.stringUUID!) //We add the node to the visited list
+        if node.stringUUID != visitedNodes.last {
+            visitedNodes.append(node.stringUUID!)
+        } //We add the node to the visited list
         let rootNode = SKSpriteNode(imageNamed: mainNodeColor)
         rootNode.position = CGPoint(x: size.width/2, y: size.height/2)
         rootNode.size = CGSize(width: 200, height: 200)
@@ -149,7 +151,7 @@ class NodeMapScene: SKScene {
         } catch {
             print("Unable to locate node's children.")
         }
-        
+        childDrawn = 0
     }
     
     func clearScreen(){
@@ -166,6 +168,13 @@ class NodeMapScene: SKScene {
         addChild(emitter!)
     }
     
+    func navigate(to newRootName: String){
+        let newRoot = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", newRootName)).first //Query to get story based on the id
+        clearScreen()
+        actualChildren = []
+        spawnAsRootNode(node: newRoot!)
+    }
+    
     // MARK: - Interaction Functions
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -173,15 +182,22 @@ class NodeMapScene: SKScene {
         guard let tappedNode = nodes(at: position).first(where: { $0 is SKSpriteNode}) else { return }
         
         if actualChildren.contains(tappedNode.name ?? "ño"){
-            print("Es un nodo hijo, podemos abrirlo")
-            guard let newRootName = tappedNode.name else { return }
-            let newRoot = realm.objects(StoryNode.self).filter(NSPredicate(format: "stringUUID CONTAINS %@", newRootName)).first //Query to get story based on the id
-            clearScreen()
-            actualChildren = []
-            spawnAsRootNode(node: newRoot!)
-
-        } else {
-            print("sakese a la berja, men >:v")
+            navigate(to: tappedNode.name!)
+        }
+        
+        switch tappedNode.name {
+        case "returnNode":
+            if visitedNodes.count == 1 {
+                break
+            } else {
+                self.visitedNodes.removeLast()
+                print("visited nodes: \(visitedNodes)")
+                navigate(to: visitedNodes.last!)
+            }
+        case "creationNode":
+            print("Cámara, perro, también podemos crear cosas")
+        default:
+            print("\n")
         }
     }
 }
